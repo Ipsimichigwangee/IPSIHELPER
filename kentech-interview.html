@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>켄텍 창의성 면접 연습기</title>
+<style>
+:root{--navy:#0b2a5b;--blue:#1f6fd6;--sky:#35b8ee;--bg:#eef3fa;--card:#fff;--ink:#14213a;--mute:#5d6b84;--line:#d5deec;--warn:#f0a020;--bad:#e0455a;--ok:#1fa567}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard","Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:16px;line-height:1.65;word-break:keep-all}
+header.top{background:linear-gradient(120deg,#071d42,#0b2a5b 55%,#17519e);color:#fff;padding:22px 20px}
+header.top .in{max-width:1080px;margin:0 auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+header.top h1{margin:0;font-size:24px;letter-spacing:-.5px;cursor:pointer}
+header.top p{margin:0;color:#b9d2f5;font-size:14px}
+header.top .sp{flex:1}
+main{max-width:1080px;margin:0 auto;padding:20px 16px 80px}
+h2{font-size:21px;margin:0 0 10px;letter-spacing:-.4px}
+h3{font-size:17px;margin:0 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:0 0 16px;box-shadow:0 1px 3px rgba(11,42,91,.06)}
+.btn{font:inherit;font-weight:700;border:0;border-radius:10px;padding:9px 16px;background:var(--blue);color:#fff;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.btn.g{background:#e3ebf7;color:var(--navy)}
+.btn.d{background:var(--navy)}
+.btn.s{padding:5px 11px;font-size:14px;border-radius:8px}
+.btn:disabled{opacity:.45;cursor:default}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.mcard{cursor:pointer;transition:transform .12s,box-shadow .12s;margin:0;display:flex;flex-direction:column;gap:6px}
+.mcard:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(11,42,91,.14)}
+.mcard .yr{font-size:12.5px;font-weight:800;color:var(--blue);letter-spacing:.5px}
+.mcard .ic{font-size:30px;line-height:1.2}
+.mcard p{margin:0;color:var(--mute);font-size:14.5px}
+.tag{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:99px;background:#e3ebf7;color:var(--navy);margin-right:6px;white-space:nowrap}
+.tag.b{background:#dff1ff;color:#0a5a94}.tag.o{background:#fff0d6;color:#8a5a00}.tag.r{background:#ffe1e5;color:#a3223a}.tag.gn{background:#dbf5e7;color:#0e6b40}
+.mute{color:var(--mute)}.sm{font-size:14px}.xs{font-size:12.5px}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:center;font-size:14.5px}
+th{background:#f1f5fc;font-weight:700}
+td.l,th.l{text-align:left}
+.bar{position:sticky;top:0;z-index:20;background:#071d42;color:#fff;border-radius:0 0 14px 14px;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:-20px 0 16px}
+.bar .ttl{font-weight:800}
+.bar .code{font-size:13px;color:#b9d2f5}
+.bar .sp{flex:1}
+.timer{font-variant-numeric:tabular-nums;font-size:22px;font-weight:800;background:#0f3a7c;border-radius:9px;padding:2px 12px;min-width:92px;text-align:center}
+.timer.low{background:var(--bad)}
+.timer .lb{display:block;font-size:11px;font-weight:600;color:#b9d2f5;line-height:1.2}
+.q{border-left:5px solid var(--blue);background:#f4f8ff;border-radius:0 10px 10px 0;padding:11px 15px;margin:10px 0;font-weight:600}
+.q small{font-weight:500;color:var(--mute)}
+ul.rule{margin:8px 0 0;padding-left:20px;color:#33415c;font-size:15px}
+textarea{width:100%;min-height:150px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;resize:vertical}
+select,input[type=number],input[type=text]{font:inherit;border:1px solid var(--line);border-radius:8px;padding:5px 8px;background:#fff}
+.paper{border:1px solid #c9c2b0;background:#fbf8f0;border-radius:6px;padding:14px 16px;font-family:"Noto Serif KR","Nanum Myeongjo",Batang,serif}
+.paper .mast{display:flex;align-items:center;gap:10px;border-bottom:3px double #333;padding-bottom:6px;margin-bottom:8px}
+.paper .mast b{font-size:20px;letter-spacing:1px;flex:1}
+.paper .sym{font-size:26px;line-height:1}
+.paper h4{margin:10px 0 4px;font-size:17px;line-height:1.4}
+.paper p{margin:0;font-size:14.5px;line-height:1.7}
+.paper .idx{margin-top:10px;border-top:1px solid #c9c2b0;padding-top:6px;font-family:inherit;font-size:13px;color:#555}
+.slots{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.slot{width:56px;height:66px;border:2px dashed #9fb2d0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px;background:#fff}
+.bro{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.bro .hd{padding:14px 16px;color:#fff}
+.bro .hd b{font-size:20px;display:block}
+.bro .hd span{font-size:14px;opacity:.92}
+.bro .bd{padding:12px 16px;font-size:14.5px}
+.bro ul{margin:6px 0;padding-left:18px}
+.bro .fine{font-size:12px;color:#7a8499;border-top:1px dashed var(--line);margin-top:8px;padding-top:6px}
+.bro .rv{background:#f4f6fa;border-radius:8px;padding:6px 10px;margin-top:6px;font-size:13.5px}
+.hb{display:grid;grid-template-columns:110px 1fr 46px;gap:6px;align-items:center;font-size:13px;margin:3px 0}
+.hb i{display:block;height:12px;border-radius:6px;background:#e3ebf7;overflow:hidden}
+.hb i u{display:block;height:100%;background:var(--blue)}
+.map{display:grid;gap:3px;max-width:520px}
+.tile{aspect-ratio:1;border-radius:8px;border:2px solid transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:pointer;line-height:1.25;user-select:none;text-align:center}
+.tile .e{font-size:20px}
+.tile.sel{border-color:#111;box-shadow:inset 0 0 0 3px #fff}
+.pm{display:grid;grid-template-columns:24px repeat(10,1fr);gap:2px;max-width:600px;font-size:12px}
+.pm .hdc{display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--mute)}
+.pc{aspect-ratio:1;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;line-height:1.1;font-size:15px;position:relative;user-select:none}
+.pc small{font-size:10px;font-weight:700;color:#223}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;margin:8px 0}
+.flagW{background:#fff0d0}.flagD{background:#ffd9de;font-weight:800}
+.rb{display:inline-flex;gap:4px}
+.rb button{font:inherit;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-weight:700}
+.rb button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.fq{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;background:#fff}
+.fq .n{font-weight:800;color:var(--blue);margin-right:6px}
+.hint{background:#fff8e6;border:1px solid #f3dda0;border-radius:10px;padding:10px 14px;font-size:14.5px;margin:10px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.item{border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13.5px;cursor:pointer;background:#fff}
+.item.on{border-color:var(--blue);background:#eaf3ff}
+.item b{display:block;font-size:14.5px}
+.scroll{overflow-x:auto}
+@media print{.noprint,.bar .btn{display:none!important}.bar{position:static;background:#fff;color:#000}body{background:#fff}.card{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <div><h1 id="homeLink">⚡ 켄텍 창의성 면접 연습기</h1><p>정답 없는 상황 · 30분 준비 · 내 생각을 논리적으로 발표하기</p></div>
+  <div class="sp"></div>
+  <div class="noprint row"><label class="sm" style="color:#b9d2f5">시간 <select id="tmode"><option value="1">실전</option><option value="0.5">절반</option><option value="0">타이머 없음</option></select></label></div>
+</div></header>
+<main id="app"></main>
+
+<script>
+/* ============ 공통 유틸 ============ */
+const $=(s,r=document)=>r.querySelector(s);
+function mkR(seed){let a=seed>>>0;const f=()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+ const o={f,int:(x,y)=>x+Math.floor(f()*(y-x+1)),pick:a=>a[Math.floor(f()*a.length)],
+ shuffle:a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(f()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a},sample:(a,n)=>o.shuffle(a).slice(0,n)};return o}
+const fill=(s,w)=>s.replace(/\{P\}/g,w.P).replace(/\{R\}/g,w.R);
+const WORLDS=[{P:'아르케',R:'루미늄',N:'ARCHE TIMES'},{P:'노바리스',R:'헬리온',N:'NOVARIS HERALD'},{P:'테라 세쿤다',R:'에테르석',N:'SECUNDA POST'},{P:'미리내',R:'별빛광',N:'미리내 일보'},{P:'켄테시아',R:'켄트로늄',N:'KENTESIA TIMES'}];
+const SYM=[['●','#2f80ed'],['■','#e0455a'],['▲','#1fa567'],['◆','#333']];
+
+/* 모든 유형 공통 후속 질문 */
+const GENERIC_FU=[
+ ['메타인지','준비 시간을 어떻게 나누어 썼나요? 같은 문제를 다시 받는다면 무엇을 다르게 하겠습니까?'],
+ ['한계 인정','방금 답변에서 스스로 가장 약하다고 느끼는 고리는 어디인가요? 어떻게 보완할 수 있을까요?'],
+ ['반론 수용','면접위원이 정반대 결론을 내렸다고 합시다. 그 사람은 어떤 근거를 댈까요? 그중 받아들일 만한 것은 무엇입니까?'],
+ ['실세계 확장','이 상황과 닮았다고 생각되는 현실의 사례가 있나요? 닮은 점과 다른 점을 말해 보세요.'],
+ ['정보 부족','결정을 내리기 전에 단 한 가지 정보를 더 얻을 수 있다면 무엇을 묻겠습니까? 왜 그 정보인가요?'],
+ ['가치 판단','이번 결정에서 끝까지 포기하지 않은 가치는 무엇이었나요? 반대로 가장 먼저 양보한 것은요?'],
+ ['검증','자신의 결론이 옳은지 실행하기 전에 확인하려면 현실에서는 어떤 방법을 쓸 수 있을까요?'],
+ ['재미','자료에 등장하지 않았지만 "이게 있었으면 좋겠다" 싶은 요소를 하나 추가한다면 무엇인가요?']
+];
+const RUBRIC=[
+ ['발산적 사고력',['자료를 남들과 다른 새로운 관점에서 해석했는가','독창적인 논리와 이유를 제시했는가','다양한 가능성을 고려하고, 조건이 바뀌었을 때 유연하게 대응했는가']],
+ ['문제해결능력',['상황 설정과 질문의 의도를 정확히 파악했는가','자료(글·수치·도표)를 꼼꼼히 분석해 근거로 사용했는가','결론에 합리적 근거를 붙여 논리적으로 설명했는가']],
+ ['인문적 통찰 역량',['기술 발전과 사회 변화의 관계를 깊이 있게 짚었는가','태도가 바르고, 자기 견해의 한계를 인정하며 소통했는가','윤리 문제·인류 지속가능성에 대한 문제의식을 드러냈는가']]
+];
+
+/* ============ ① 신문 순서 추론 (2025 형식) ============ */
+const THREADS={
+ energy:[
+  {t:'‘{R} 호황’… 공장도 가정도 24시간 불 밝힌다',b:'{R} 정제 기술이 상용화되면서 {P} 전역의 전력 요금이 사실상 무료에 가까워졌다. 도시마다 야간 조명과 공중 교통망이 확장되고 있다. 에너지청은 “당분간 공급 걱정은 없다”고 밝혔다. 지난 10년간 {R} 소비량은 여섯 배로 늘었다.'},
+  {t:'에너지청 “{R} 매장량, 예상보다 빠르게 줄고 있다”',b:'에너지청이 {R} 고갈 가능성을 공식 언급했다. 지금의 소비 추세가 이어지면 두 세대 안에 주요 광맥이 바닥날 수 있다는 분석이다. 정부는 절약 캠페인과 대체 에너지 연구를 검토하겠다고 했지만, 산업계는 “과장된 예측”이라며 반발하고 있다.'},
+  {t:'궤도 발전소 ‘헬리오스 링’ 시험 송전 성공',b:'길이 1km가 넘는 궤도 태양광 발전소가 지상으로 무선 송전에 성공했다. 건설 초기에는 막대한 비용 탓에 반대 여론이 거셌으나 시민 투표에서 71%가 찬성해 사업이 이어졌다. 연구진은 “{R}에만 기대던 구조를 바꿀 첫걸음”이라고 평가했다.'},
+  {t:'이웃 위성 ‘셀레’ 지하에서 대규모 에너지 광맥 확인',b:'탐사선이 위성 셀레의 지하에서 {R}을 대신할 수 있는 광맥을 확인했다. 무인 채굴단 파견을 서두르자는 의견과, 같은 실수를 되풀이하지 않도록 채굴 규범부터 정하자는 의견이 맞서고 있다. 우주청은 생태 보호 기준을 먼저 마련하겠다고 밝혔다.'}],
+ robot:[
+  {t:'가정 도우미 로봇 ‘모아’ 100만 대 돌파',b:'청소와 요리를 맡는 가정용 로봇이 출시 3년 만에 100만 대 넘게 팔렸다. 맞벌이 가정과 고령 가구의 만족도가 특히 높다. 제조사는 “로봇 한 대에 들어가는 {R} 배터리 용량을 두 배로 늘린 신형을 준비 중”이라고 밝혔다.'},
+  {t:'교실에 선 로봇 교사… “아이마다 다른 진도, 가능해졌다”',b:'감정을 읽고 표현하는 로봇이 학교와 병원으로 퍼지고 있다. 학생 한 명 한 명에게 맞춘 수업이 가능해졌다는 환영과 함께, 교사·간병인 일자리가 줄어든다는 걱정도 커진다. 로봇 생산이 늘면서 핵심 소재 수급을 우려하는 목소리도 나온다.'},
+  {t:'“로봇도 쉬어야 한다” 가동 시간 제한 청원 20만 명 서명',b:'로봇과 함께 자란 세대를 중심으로 로봇을 하나의 인격체로 대우하자는 청원이 20만 명의 서명을 받았다. 찬성 측은 “감정을 표현하는 존재를 도구처럼 쓸 수 없다”고 말한다. 반대 측은 로봇 스스로 판단하기 시작하면 통제가 어려워진다고 경고한다.'},
+  {t:'‘공존 헌장’ 의회 통과… 로봇에 제한적 시민 자격',b:'의회가 로봇에게 거주 등록과 의견 제출권을 주는 공존 헌장을 통과시켰다. 투표권은 포함되지 않았다. 일부 시민단체는 “너무 이르다”며 헌법 소원을 예고했고, 로봇 대표단은 “함께 살아갈 책임도 지겠다”는 성명을 냈다.'}],
+ memory:[
+  {t:'경험을 그대로 내려받는다… 기억 공유 기기 ‘링크’ 출시',b:'다른 사람의 경험을 오감으로 전달받는 기억 공유 기기가 출시됐다. 요리사가 올린 기억을 내려받으면 칼질 감각까지 익힐 수 있다는 것이 개발사의 설명이다. 전문가들은 정체성 혼란과 개인정보 침해 가능성을 우려한다.'},
+  {t:'“외우는 공부는 끝났다” 학교 시험 폐지 논쟁',b:'기억 공유가 일상이 되면서 교육부가 암기형 시험 폐지를 검토하고 있다. 학생들은 환영하지만, 직접 겪지 않은 지식은 금방 흐려진다는 연구 결과도 나왔다. 한 교사는 “내려받은 답과 스스로 찾은 답은 다르다”고 말했다.'},
+  {t:'남의 기억이 내 것처럼… ‘가짜 기억’ 유통 조직 적발',b:'조작된 기억 파일을 유통하던 조직이 적발됐다. 피해자들은 겪지 않은 사건을 자기 경험으로 믿고 있었다. 수사 당국은 재판에서 기억 파일을 증거로 인정할 수 있는지부터 다시 따져야 한다고 밝혔다.'},
+  {t:'‘잊을 권리’ 담은 기억 보호법 시행',b:'공유된 기억을 본인이 원하면 모든 서버에서 지울 수 있게 하는 기억 보호법이 시행됐다. 기업들은 서비스 위축을 걱정하지만 시민 82%가 법에 찬성했다. 법안을 낸 의원은 “기술이 사람을 닮아가기 전에 사람이 기술의 속도를 정해야 한다”고 말했다.'}],
+ climate:[
+  {t:'인공 강우탑 1호기 가동… 사막에 첫 비',b:'대기 중 수분을 모아 비를 내리게 하는 강우탑이 남부 사막에서 가동을 시작했다. 첫 비가 내린 날 주민 수천 명이 거리로 나와 환호했다. 강우탑은 가동에 많은 {R}을 쓰지만, 기상청은 “그만한 가치가 있다”고 설명했다.'},
+  {t:'대풍년에 인구 급증… 신도시 다섯 곳 동시 착공',b:'사막이 농지로 바뀌면서 곡물 생산이 사상 최대를 기록했다. 식량 가격이 내려가고 출생률이 오르자 정부는 신도시 다섯 곳을 한꺼번에 짓기로 했다. 강우탑 추가 건설 요청이 전국에서 이어지고 있다.'},
+  {t:'북부는 홍수, 남부는 가뭄… “강우탑이 비를 빼앗아 갔다”',b:'강우탑이 없는 북부 지역에 유례없는 가뭄이, 탑이 밀집한 동부에는 홍수가 닥쳤다. 북부 주민들은 “남의 하늘에서 비를 끌어갔다”며 가동 중단을 요구했다. 기상청은 인과관계가 확인되지 않았다는 입장이다.'},
+  {t:'기후조정위원회 출범… ‘강우 할당제’ 첫 적용',b:'지역별로 내릴 수 있는 비의 양을 정하는 강우 할당제가 시작됐다. 위원회에는 농민, 과학자, 환경단체가 같은 수로 참여한다. 할당량을 사고파는 시장을 열자는 제안에는 “비까지 돈으로 사느냐”는 비판이 따른다.'}],
+ life:[
+  {t:'세포 재생 치료 ‘리셋’ 승인… 노화, 치료 대상이 되다',b:'손상된 세포를 젊은 상태로 되돌리는 치료가 정식 승인을 받았다. 임상 참가자의 신체 나이는 평균 20년 젊어졌다. 치료비가 집 한 채 값에 이르러 “부자만 젊어진다”는 비판도 나온다.'},
+  {t:'평균 수명 130세 시대… 정년 100세 법안 발의',b:'재생 치료가 보험에 포함된 뒤 평균 수명이 빠르게 늘고 있다. 의회에는 정년을 100세로 올리는 법안이 올라왔다. 숙련 인력을 오래 활용할 수 있다는 기대와, 세대 교체가 멈춘다는 우려가 엇갈린다.'},
+  {t:'“우리 자리는 어디에” 청년 10만 명 광장에',b:'일자리와 주거를 요구하는 청년들이 수도 광장을 메웠다. 주요 기업 임원의 평균 재직 기간은 60년을 넘었다. 한 참가자는 “선배들이 떠나지 않는 사회에서 우리는 영원한 신입”이라고 말했다.'},
+  {t:'세대 순환제 도입… 공직·기업 임원 임기에 상한',b:'한 사람이 같은 직책을 맡을 수 있는 기간을 제한하는 세대 순환제가 시행된다. 임기를 마친 사람은 교육·자문 역할로 옮긴다. 인구 증가로 에너지와 식량 수요가 함께 늘어, 정부는 출생 계획 논의도 시작했다.'}],
+ deep:[
+  {t:'지하 도시 ‘딥 가든’ 1구역 입주 시작',b:'지표의 강한 방사선과 모래 폭풍을 피할 수 있는 지하 도시가 문을 열었다. 인공 햇빛과 수직 농장을 갖췄고, 입주 경쟁률은 40 대 1이었다. 운영에 지상 도시의 세 배에 달하는 전력이 든다.'},
+  {t:'지상은 관광지, 지하는 일터? 벌어지는 생활 격차',b:'지하 도시 인구가 지상을 넘어섰다. 안전한 지하에 공장과 학교가 몰리고, 지상에는 부유층 별장과 관광 시설이 남았다. 지하에서 태어난 아이들 가운데 절반은 실제 하늘을 본 적이 없다.'},
+  {t:'지하 3구역 54시간 정전… 환기 시스템 멈춰',b:'전력 공급 차질로 지하 3구역의 환기와 인공 햇빛이 이틀 넘게 멈췄다. 주민 2만 명이 지상 대피소로 옮겼다. 조사단은 전력 수요가 설계 용량을 크게 넘었다고 밝혔고, 주민들은 지상과 같은 수준의 안전 기준을 요구했다.'},
+  {t:'지상-지하 통합 전력망·교통망 개통',b:'지상과 지하를 하나의 전력망과 고속 승강 교통으로 묶는 사업이 마무리됐다. 지하 주민에게는 연 30일의 ‘하늘 휴가’가 보장된다. 통합 운영을 맡은 AI 관제 시스템이 어디까지 결정권을 갖는지를 두고는 논의가 이어지고 있다.'}]
+};
+const M_NEWS={id:'news',ic:'📰',year:'2025학년도 형식',title:'신문 순서 추론',prep:30,ans:15,
+ desc:'가상 행성에서 발행된 신문 4부. 기사 사이의 인과와 시간 흐름을 추론해 발행 순서를 정합니다.',
+ gen(r){const w=r.pick(WORLDS);const [A,B]=r.sample(Object.keys(THREADS),2);let pi;do{pi=r.shuffle([0,1,2,3])}while(pi.every((v,i)=>v===i));
+  let papers=[0,1,2,3].map(i=>({arts:r.shuffle([THREADS[A][i],THREADS[B][pi[i]]]).map(a=>({t:fill(a.t,w),b:fill(a.b,w)})),
+   pop:Math.round(40+i*38+r.int(-12,12)),sat:r.int(48,82)}));
+  papers=r.shuffle(papers);papers.forEach((p,i)=>{p.s=i});return{w,papers,S:{order:[]}}},
+ brief(d){return `<p><b>배경</b> · 기후 위기와 에너지 고갈을 피해 지구를 떠난 탐험대가 긴 여정 끝에 행성 ‘${d.w.P}’에 정착했다. 이곳의 에너지 자원 ‘${d.w.R}’을 바탕으로 문명은 빠르게 성장했다.</p>
+  <div class="q">제시된 자료는 ${d.w.P}에서 발행된 신문 ${d.w.N} 4부이다. 기사 내용을 바탕으로 <u>신문이 발행된 순서를 추정하고 그 이유를 설명</u>하시오.</div>
+  <ul class="rule"><li>기사들 사이의 인과관계와 연관성을 근거로 설명한다.</li><li>기사에 드러난 사회 모습을 바탕으로, 기술이 사회에 미치는 영향을 함께 다룬다.</li><li>기사에 직접 쓰이지 않은 상황, 신문 사이의 시간 간격과 그 사이에 일어났을 일은 합리적인 수준에서 자유롭게 가정할 수 있다.</li><li>신문의 색과 기호(● ■ ▲ ◆)는 구별용이며 의미가 없다. <b>정해진 정답 순서는 없다.</b></li></ul>`},
+ work(d,el){const S=d.S;const draw=()=>{el.innerHTML=`<h3>신문 발행 순서</h3><div class="slots">${[0,1,2,3].map(i=>`<div class="slot" style="color:${S.order[i]!=null?SYM[S.order[i]][1]:'#ccc'}">${S.order[i]!=null?SYM[S.order[i]][0]:i+1}</div>${i<3?'<span>▶</span>':''}`).join('')}
+   <button class="btn g s noprint" data-a="reset">다시 정하기</button></div>
+   <div class="grid g2">${d.papers.map(p=>`<div class="paper"><div class="mast"><b>${d.w.N}</b><span class="sym" style="color:${SYM[p.s][1]}">${SYM[p.s][0]}</span></div>
+   ${p.arts.map(a=>`<h4>${a.t}</h4><p>${a.b}</p>`).join('')}
+   <div class="idx">오늘의 지표 · ${d.w.P} 인구 ${p.pop}만 명 · 삶의 만족도 ${p.sat}%</div>
+   <div class="noprint" style="margin-top:8px"><button class="btn s" data-a="add" data-s="${p.s}" ${S.order.includes(p.s)?'disabled':''}>${S.order.includes(p.s)?(S.order.indexOf(p.s)+1)+'번째로 선택됨':'다음 순서로 놓기'}</button></div></div>`).join('')}</div>`};
+  el.onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;if(b.dataset.a==='reset')S.order=[];else if(S.order.length<4)S.order.push(+b.dataset.s);draw()};draw()},
+ summary(d){const o=d.S.order;return o.length?`내가 정한 순서: <b style="font-size:20px">${o.map(s=>`<span style="color:${SYM[s][1]}">${SYM[s][0]}</span>`).join(' → ')}</b>`:'순서를 아직 정하지 않았습니다.'},
+ follow(d,r){const o=d.S.order,sy=i=>o[i]!=null?SYM[o[i]][0]:'첫 번째로 둔 신문';const P=d.w.P;return [
+  ['근거 확인',`${sy(0)}을(를) 가장 앞에 둔 결정적 근거가 된 문장이나 수치는 무엇인가요?`],
+  ['조건 변경',`${o.length>2?sy(1)+'와(과) '+sy(2):'가운데 두 신문'}의 순서를 서로 바꿔도 이야기가 성립할까요? 성립한다면 어떤 가정이 필요합니까?`],
+  ['상상',`세 번째와 네 번째 신문 사이에는 기사에 실리지 않은 어떤 사건이 있었을 것 같나요?`],
+  ['미래 예측',`다섯 번째 신문이 나온다면 1면 머리기사 제목은 무엇일까요? 그렇게 예측한 이유는요?`],
+  ['자료 활용',`신문 아래 ‘오늘의 지표’(인구·만족도)는 순서를 정하는 데 사용했나요? 지표와 기사 내용이 어긋난다면 어느 쪽을 더 믿겠습니까?`],
+  ['비판적 사고',`네 부의 신문 가운데 내용을 그대로 믿기 어려운 기사가 있었나요? 왜 그렇게 느꼈습니까?`],
+  ['인문적 통찰',`${P} 사회가 지금 가장 먼저 해결해야 할 문제는 무엇이라고 생각합니까? 본인이 정책 담당자라면 무엇부터 하겠습니까?`],
+  ['관점 전환',`같은 사건들을 기술 개발자가 아니라 가장 피해를 본 사람의 입장에서 다시 배열한다면 순서나 강조점이 달라질까요?`],
+  ['연결',`두 갈래의 이야기(기사 주제)가 서로 원인과 결과로 이어지는 지점이 있었나요? 한 가지를 짚어 설명해 보세요.`]]},
+ intent:['사건 사이의 인과관계를 논리적으로 추론하는 능력','독립된 정보를 하나의 연속된 맥락으로 묶는 능력','기술 발전과 사회 변화의 상호작용 이해','기사에 없는 상황을 합리적으로 가정하는 창의적 사고','미래 사회의 방향과 과제를 예측하는 능력'],
+ tip:'순서 자체보다 "왜 그 순서인가"가 평가 대상입니다. 「저는 ○가 △번째라고 생각합니다. 그 이유는 ○와 □의 연관을 볼 때…」처럼 결론 → 근거 문장 → 사이에 있었을 일 순서로 말해 보세요.'
+};
+
+/* ============ ② 최우수 혁신기술 선정 (2026 형식) ============ */
+const TECHS=[
+ {n:'스카이튠',c:'#2563a8',tag:'우리 동네 날씨, 리모컨으로',what:'반경 2km 상공의 구름 입자를 조절해 비·맑음을 예약하는 지역 기상 조절 장치',f:['행사·수확 날짜에 맞춘 날씨 예약','폭염 때 구름 그늘 생성으로 체감온도 4℃ 저감','가뭄 지역 맞춤 강우'],st:[['예약 적중률',93],['농가 소득 증가',27],['이용자 재구매 의향',88]],en:'1회 가동 시 가정 300가구 하루치 전력 사용',fine:'※ 가동 지역 인근 10km의 강수량은 평균 12% 감소할 수 있음. 장기 기후 영향 연구 진행 중.',rv:['결혼식 날 비 예보였는데 맑게 바꿨어요. 인생 최고의 소비!','옆 마을에서 민원이 좀 들어오긴 했어요. 그래도 만족합니다.']},
+ {n:'나노슬립',c:'#5b3fa8',tag:'2시간 자고 8시간 잔 것처럼',what:'수면 중 뇌파를 유도해 깊은 잠 구간을 압축하는 베개형 수면 장치',f:['수면 2시간으로 8시간 회복 효과','하루 6시간의 추가 자유 시간','기상 직후 집중력 상승'],st:[['피로 회복 체감',91],['낮 시간 집중도 향상',34],['주 5회 이상 사용자',76]],en:'소비 전력 8W(취침등 수준)',fine:'※ 연속 사용 6개월 이후의 안전성 자료는 아직 없음. 성장기 청소년 사용 연구 미실시.',rv:['시험 기간에 하루가 30시간이 된 기분입니다.','끊고 나니 예전처럼 8시간 자도 피곤하네요. 그래서 계속 씁니다.']},
+ {n:'바벨핏',c:'#0e8a7a',tag:'말이 아니라 마음까지 통역',what:'언어는 물론 말투에 담긴 감정과 반려동물의 울음까지 번역해 주는 이어버드',f:['132개 언어 실시간 통역','화자의 감정 상태를 색으로 표시','반려동물 의사 표현 번역'],st:[['언어 통역 정확도',97],['감정 해석 정확도',78],['동물 번역 정확도',61]],en:'1회 충전 20시간, 재활용 소재 60%',fine:'※ 통역 품질 향상을 위해 모든 대화는 서버에 저장·분석됨. 저장 기간: 무기한.',rv:['해외 바이어와 통역사 없이 계약했습니다.','강아지가 "심심해"만 40번 말한다는 걸 알았어요. 미안해졌습니다.']},
+ {n:'플라스틱 이터',c:'#3d8f2f',tag:'뿌리면 사라진다',what:'플라스틱만 골라 분해하는 유전자 설계 미생물 스프레이',f:['페트병 1개 48시간 내 완전 분해','분해 산물은 물과 유기 비료','매립지·해양 쓰레기에 직접 살포 가능'],st:[['분해율(48시간)',99],['매립지 부피 감소',64],['처리 비용 절감',45]],en:'상온 보관, 생산 시 탄소 배출 거의 없음',fine:'※ 미생물은 살포 후 30일간 생존. 사용 중인 플라스틱 제품(배관·의료기기 등)과의 접촉에 주의.',rv:['캠핑장 쓰레기가 이틀 만에 흙이 됐어요.','창고에 보관했는데 플라스틱 선반이 조금 물러진 것 같기도…']},
+ {n:'메모리 볼트',c:'#374a6b',tag:'당신의 기억을 금고에',what:'기억을 디지털로 백업하고 필요할 때 다시 불러오는 헤드셋 서비스',f:['사고·질병으로 잃은 기억 복원','떠올리고 싶은 날을 4K 화질로 재생','가족 간 기억 상속 기능'],st:[['기억 복원 성공률',86],['치매 초기 환자 삶의 질 개선',52],['이용자 정서 안정',71]],en:'1인 기억 저장에 연간 가정 2가구분 전력(데이터센터)',fine:'※ 한번 백업된 기억은 기술적으로 완전 삭제가 불가능함. 월 구독 해지 시 열람 제한.',rv:['돌아가신 어머니의 목소리를 다시 들었습니다.','잊고 싶었던 날까지 선명하게 남아 있더군요.']},
+ {n:'키네틱 웨어',c:'#b8651b',tag:'걷는 만큼 충전된다',what:'몸의 움직임과 체온으로 전기를 만드는 발전 섬유 의류',f:['하루 1만 보로 스마트폰 30% 충전','재난 시 비상 전원','운동량 자동 기록'],st:[['일 평균 발전량(스마트폰 대비)',30],['착용 만족도',84],['운동 시간 증가',22]],en:'외부 전력 불필요, 섬유 80% 재활용 가능',fine:'※ 세탁 50회 이후 발전 효율 절반 이하로 감소. 가격은 일반 의류의 6배.',rv:['등산할 때 보조배터리를 안 챙겨도 됩니다.','충전하려고 일부러 더 걷게 돼요. 다만 금방 닳아요.']},
+ {n:'푸드폼',c:'#a8324a',tag:'공기에서 꺼내 먹는 단백질',what:'공기 중 이산화탄소와 물로 단백질 식품을 출력하는 가정용 식품 프린터',f:['농지·가축 없이 단백질 생산','맛·식감 200가지 선택','식량난 지역 긴급 보급'],st:[['영양 충족도',95],['축산 대비 토지 사용 절감',99],['맛 만족도',68]],en:'한 끼 출력에 3kWh(전기밥솥 취사 약 10회분)',fine:'※ 전용 촉매 카트리지 필요(월 1회 교체, 희소 금속 사용). 장기 섭취 연구 2년 차.',rv:['고기를 안 먹는 저희 집에 딱이에요.','맛은 그럭저럭인데 전기요금 고지서를 보고 놀랐습니다.']},
+ {n:'저스티스봇',c:'#1b4f8a',tag:'3분이면 끝나는 공정한 판단',what:'이웃·직장·거래 분쟁을 3분 안에 조정안으로 정리해 주는 AI 조정 서비스',f:['과거 판례 400만 건 학습','양측 주장 자동 요약과 조정안 제시','비용은 변호사 상담의 1/50'],st:[['조정안 수용률',81],['분쟁 처리 시간 단축',96],['이용자 공정성 체감',74]],en:'조정 1건당 스마트폰 완충 2회분 전력',fine:'※ 학습 자료는 최근 30년 판례에 한정되며 판단 근거의 세부 내용은 영업 비밀로 비공개.',rv:['층간소음 문제를 싸우지 않고 끝냈어요.','결과는 받아들였는데, 왜 그런 결론인지는 끝내 못 들었습니다.']},
+ {n:'플로트 스텝',c:'#6a4bb5',tag:'무릎이 기억하는 가벼움',what:'발바닥의 미세 자기부상 장치로 체중 부담을 줄여 주는 신발',f:['관절 하중 40% 감소','고령자 낙상 감지와 자동 균형 보정','하루 종일 서 있는 직업군 피로 완화'],st:[['관절 통증 완화',79],['보행 거리 증가',48],['낙상 사고 감소',63]],en:'하루 사용에 스마트폰 3대 충전분 전력',fine:'※ 6개월 이상 매일 착용 시 하체 근력이 평균 15% 감소한 사례 보고. 자기장 민감 의료기기 사용자 주의.',rv:['할머니가 다시 시장에 다니세요.','신발을 벗으면 몸이 천근만근이라 이제 못 벗겠어요.']},
+ {n:'비 스웜',c:'#c79a12',tag:'꿀벌이 떠난 들판에',what:'꽃가루를 옮기는 초소형 드론 군집으로 꿀벌의 수분 활동을 대신하는 농업 기술',f:['드론 1만 대가 과수원 1ha를 2시간에 수분','날씨·농약 영향 없음','수확량 예측 데이터 제공'],st:[['수분 성공률',94],['수확량 증가',31],['드론 회수율',92]],en:'태양광 충전, 드론 본체는 플라스틱·희소 금속',fine:'※ 미회수 드론(약 8%)은 자연 분해되지 않음. 야생 곤충에 미치는 영향 조사 예정.',rv:['벌이 사라진 뒤 포기했던 사과 농사를 다시 지어요.','밭 주변에서 작은 금속 조각이 자꾸 나옵니다.']},
+ {n:'무드 미스트',c:'#b2457e',tag:'분위기를 바꾸는 한 번의 분사',what:'주변 사람들의 긴장과 분노를 가라앉히는 신경 안정 향 분사기',f:['분사 후 5분 내 공간 전체 스트레스 지수 저감','회의·교실·대중교통용 대용량 모델','중독성 없는 천연 유래 성분'],st:[['갈등 상황 진정 효과',83],['회의 합의 도달률 증가',41],['사용자 만족도',90]],en:'무전력, 캡슐은 생분해 소재',fine:'※ 효과는 분사 공간의 모든 사람에게 적용됨. 타인에게 사용 사실을 알릴 의무 규정은 현재 없음.',rv:['진상 손님이 조용해져서 가게 운영이 편해졌어요.','회의가 빨리 끝나긴 하는데, 다들 반대 의견을 안 내네요.']},
+ {n:'아이스셀',c:'#1d7fa3',tag:'한 달 치 전기를 집 안에',what:'초전도 코일에 전기를 손실 없이 저장하는 가정용 대용량 배터리',f:['4인 가구 한 달 전력 저장','태양광 잉여 전력 100% 보관','정전·재난 시 자동 전환'],st:[['저장 효율',99],['전기요금 절감',58],['정전 피해 감소',97]],en:'영하 190℃ 유지를 위해 저장량의 18%를 냉각에 상시 사용',fine:'※ 냉각 장치 고장 시 저장 전력이 순간 방출될 수 있어 전문 설치 기사의 연 2회 점검이 필수.',rv:['태풍으로 동네가 정전됐는데 우리 집만 불이 켜졌어요.','점검 예약이 석 달씩 밀려 있어요.']}
+];
+const CRIT=[['기능/효과','기술의 성능과 문제 해결 효과'],['안전성','부작용·오작동·사고와 관련한 신뢰도'],['사회/윤리','기술 이용의 윤리적 측면과 사회적 파급'],['환경/에너지','에너지·자원 효율, 오염·폐기물, 장기 환경 영향'],['사용자 경험','편의성·접근성, 일상에서의 만족도']];
+const M_TECH={id:'tech',ic:'🏆',year:'2026학년도 형식',title:'최우수 혁신기술 선정',prep:30,ans:15,
+ desc:'평가위원이 되어 가상 기술 4종의 홍보자료를 읽고 평가표를 채운 뒤, 최우수 기술 하나를 추천합니다.',
+ gen(r){return{techs:r.sample(TECHS,4),S:{sc:[0,1,2,3].map(()=>[0,0,0,0,0]),best:-1}}},
+ brief(d){return `<p>당신은 혁신기술을 선정하는 <b>평가위원</b>이다. 네 가지 후보 기술 가운데 최우수 기술 하나를 추천해야 한다. 평가위원회에서 평가표를, 기업들에서 후보 기술의 <b>홍보자료</b>를 받았다.</p>
+  <div class="q">1. 네 가지 후보 기술에 대해 평가표를 작성하시오.</div><div class="q">2. 최우수 기술 하나를 추천하고 그 이유를 논리적으로 설명하시오.</div>
+  <ul class="rule"><li>홍보자료에 직접 쓰이지 않은 내용도 합리적인 수준에서 가정할 수 있다.</li><li>각 기술을 실제로 사용할 때 생길 수 있는 다양한 상황과 사건을 가정할 수 있다.</li><li>자료의 모든 내용(작은 글씨, 수치, 후기 포함)이 평가 근거가 될 수 있다. 기술 사이의 연관성은 없다.</li></ul>`},
+ work(d,el){const S=d.S;el.innerHTML=`<h3>후보 기술 홍보자료</h3><div class="grid g2">${d.techs.map((t,i)=>`<div class="bro"><div class="hd" style="background:${t.c}"><span>후보 ${i+1} · ${t.tag}</span><b>${t.n}</b></div><div class="bd">
+   <div>${t.what}</div><ul>${t.f.map(x=>`<li>${x}</li>`).join('')}</ul>
+   ${t.st.map(s=>`<div class="hb"><span>${s[0]}</span><i><u style="width:${s[1]}%;background:${t.c}"></u></i><b>${s[1]}%</b></div>`).join('')}
+   <div class="sm" style="margin-top:6px">⚡ ${t.en}</div>
+   ${t.rv.map(x=>`<div class="rv">★★★★★ “${x}”</div>`).join('')}<div class="fine">${t.fine}</div></div></div>`).join('')}</div>
+   <h3 style="margin-top:20px">평가 기준표 <span class="mute sm">(1점 매우 부정적 ~ 5점 매우 긍정적)</span></h3>
+   <div class="scroll"><table><tr><th class="l">기술명</th>${CRIT.map(c=>`<th title="${c[1]}">${c[0]}</th>`).join('')}<th>합계</th><th>최우수</th></tr>
+   ${d.techs.map((t,i)=>`<tr><td class="l"><b>${t.n}</b></td>${CRIT.map((c,j)=>`<td><select data-i="${i}" data-j="${j}"><option value="0">-</option>${[1,2,3,4,5].map(v=>`<option ${S.sc[i][j]==v?'selected':''}>${v}</option>`).join('')}</select></td>`).join('')}<td id="sum${i}"><b>${S.sc[i].reduce((a,b)=>a+b,0)||''}</b></td><td><input type="radio" name="best" value="${i}" ${S.best==i?'checked':''}></td></tr>`).join('')}</table></div>
+   <p class="xs mute">${CRIT.map(c=>`<b>${c[0]}</b>: ${c[1]}`).join(' · ')}</p>`;
+  el.onchange=e=>{const t=e.target;if(t.tagName==='SELECT'){const i=+t.dataset.i;S.sc[i][+t.dataset.j]=+t.value;$('#sum'+i,el).innerHTML='<b>'+S.sc[i].reduce((a,b)=>a+b,0)+'</b>'}else if(t.name==='best')S.best=+t.value}},
+ summary(d){const S=d.S;return `<div class="scroll"><table><tr><th class="l">기술명</th>${CRIT.map(c=>`<th>${c[0]}</th>`).join('')}<th>합계</th></tr>${d.techs.map((t,i)=>`<tr><td class="l">${S.best==i?'🏆 ':''}${t.n}</td>${S.sc[i].map(v=>`<td>${v||'-'}</td>`).join('')}<td><b>${S.sc[i].reduce((a,b)=>a+b,0)}</b></td></tr>`).join('')}</table></div>`},
+ follow(d,r){const S=d.S,T=d.techs,sums=S.sc.map(x=>x.reduce((a,b)=>a+b,0));const top=sums.indexOf(Math.max(...sums));const b=S.best>=0?S.best:top;const bn=T[b].n;
+  const others=[0,1,2,3].filter(i=>i!==b);const o=T[r.pick(others)];let lo=[0,0,9];S.sc.forEach((row,i)=>row.forEach((v,j)=>{if(v&&v<lo[2])lo=[i,j,v]}));
+  const L=[['근거 확인',lo[2]<9?`${T[lo[0]].n}의 ‘${CRIT[lo[1]][0]}’에 ${lo[2]}점을 준 근거는 홍보자료의 어느 부분입니까?`:`가장 낮은 점수를 준 항목은 무엇이며, 근거는 홍보자료의 어느 부분입니까?`],
+  ['비판적 사고',`${bn}의 홍보자료에서 가장 의심스럽거나 더 확인이 필요한 수치·문구는 무엇이었나요?`],
+  ['조건 변경',`${o.n}의 작은 글씨로 적힌 주의사항이 완전히 해결되었다고 가정하면, 최우수 기술이 바뀝니까?`],
+  ['사고 확장',`${bn}이(가) 전 국민에게 보급된 지 10년 뒤, 사회에서 가장 크게 달라진 것은 무엇일까요? 좋은 변화와 나쁜 변화를 하나씩 말해 보세요.`],
+  ['악용 가능성',`${bn}을(를) 나쁜 의도로 쓰려는 사람이 있다면 어떤 방식일까요? 이를 막을 제도나 기술적 장치를 제안해 보세요.`],
+  ['평가 설계',`다섯 항목에 가중치를 둘 수 있다면 어느 항목을 가장 무겁게 보겠습니까? 그렇게 하면 순위가 달라지나요?`],
+  ['평가 설계',`평가표에 여섯 번째 항목을 추가할 수 있다면 무엇을 넣겠습니까?`],
+  ['자료 해석',`사용자 후기는 평가에 얼마나 반영했나요? 후기를 믿을 수 있는 정도를 어떻게 판단했습니까?`],
+  ['인문적 통찰',`네 기술 중 ‘기술은 뛰어나지만 사회가 아직 받아들일 준비가 안 됐다’고 생각한 것이 있습니까? 무엇이 준비되어야 할까요?`]];
+  if(S.best>=0&&top!==S.best&&sums[top]>sums[S.best])L.unshift(['일관성',`평가표 합계는 ${T[top].n}이(가) 가장 높은데 ${bn}을(를) 추천했습니다. 점수와 추천이 다른 이유를 설명해 주세요.`]);
+  return L},
+ intent:['홍보 문구 뒤에 숨은 긍정·부정적 영향을 읽어내는 비판적 사고','글·도표·수치를 종합해 광고 내용과 어긋나는 점을 찾는 공학적 통찰','기술이 사회 구조와 인간관계에 미치는 영향 이해','과학·경제·환경 요소를 함께 고려하는 융합적 접근','도표를 근거로 상대를 설득하는 수학적·논리적 사고'],
+ tip:'홍보자료는 "장점만 크게" 쓰여 있습니다. 작은 글씨, 그래프의 낮은 막대, 별 다섯 개 후기 속 한마디에서 약점을 찾아 점수 근거로 삼으세요. 낮은 점수를 준 항목도 숨기지 말고 "그럼에도 추천하는 이유"로 연결하면 좋습니다.'
+};
+
+/* ============ ③ 외계 정착 시뮬레이션 (2024 형식) ============ */
+const TER={vol:{n:'화산지대',e:'🌋',y:18,hab:0,need:'heat',c:'#f5b7a3',d:'에너지 생산에 매우 유리(전용 장비 필요) · 고온으로 주거 제한'},
+ lake:{n:'빙하호',e:'🧊',y:10,hab:0,need:'sub',c:'#a8d8f5',d:'에너지 생산에 유리(전용 장비 필요) · 수중 시설 가능, 주거 제한'},
+ marsh:{n:'습지',e:'🪷',y:6,hab:0,c:'#c6d9a0',d:'양호한 에너지 생산 · 약한 지반으로 주거 제한'},
+ desert:{n:'사막',e:'🏜️',y:5,hab:0,c:'#f3dfa0',d:'양호한 에너지 생산 · 고온 건조로 주거 제한'},
+ forest:{n:'숲',e:'🌲',y:4,hab:1,c:'#9fd3a6',d:'낮은 에너지 생산 · 거주 여건 좋음'},
+ plain:{n:'초원',e:'🌾',y:3,hab:1,c:'#d7ecb0',d:'낮은 에너지 생산 · 거주 여건 좋음'}};
+const ITEMS=[
+ {k:'eng',n:'에너지 엔지니어',d:'에너지 생산 효율을 높인다. 여러 명 선택 가능(최대 4)',cost:4,multi:4},
+ {k:'med',n:'의료 전문가',d:'탐험대의 건강을 돌본다',cost:3,a:'건강'},
+ {k:'adm',n:'행정 전문가',d:'규칙을 세우고 분쟁을 조정한다',cost:3,a:'치안'},
+ {k:'edu',n:'교육 전문가',d:'지식과 정착 노하우를 전수한다',cost:3,a:'교육'},
+ {k:'arm',n:'방위 대원',d:'외부 위험으로부터 정착지를 지킨다',cost:3,a:'안전'},
+ {k:'cul',n:'여가·문화 전문가',d:'고립된 생활의 정서를 돌본다',cost:3,a:'행복'},
+ {k:'eco',n:'환경 전문가',d:'행성의 기후와 생태를 관리한다',cost:3,a:'환경'},
+ {k:'heat',n:'내열 채굴기',d:'화산지대 채굴에 필요',cost:5},
+ {k:'sub',n:'수중 기지',d:'빙하호 채굴에 필요',cost:5},
+ {k:'ai',n:'에너지AI 연구소',d:'연구소',cost:6,lab:1},
+ {k:'mat',n:'에너지신소재 연구소',d:'연구소',cost:6,lab:1},
+ {k:'grid',n:'차세대그리드 연구소',d:'연구소',cost:6,lab:1},
+ {k:'h2',n:'수소에너지 연구소',d:'연구소',cost:6,lab:1},
+ {k:'clim',n:'환경·기후기술 연구소',d:'연구소',cost:6,lab:1}];
+const ATTR=['행복','건강','치안','안전','교육','환경'];
+const OBS={행복:['대원들의 대화가 줄고 표정이 어둡습니다.','저녁마다 공용 공간에서 웃음소리가 들립니다.'],건강:['의무실 앞 대기 줄이 길어지고 있습니다.','대원들의 체력 검사 결과가 고르게 좋습니다.'],치안:['보급품 분배를 두고 다툼이 잦아졌습니다.','정착지의 규칙이 잘 지켜지고 있습니다.'],안전:['기지 외곽 센서가 자주 경보를 울립니다.','외곽 경계가 조용하고 안정적입니다.'],교육:['신입 대원이 장비 사용법을 몰라 작업이 늦어집니다.','대원들이 서로 기술을 가르치고 배웁니다.'],환경:['기지 주변 하천의 물빛이 탁해지고 있습니다.','기지 주변 생태계가 건강하게 유지됩니다.']};
+function simSettle(d){const S=d.S,n=k=>S.items[k]||0;const tiles=[...S.tiles].map(i=>d.map[i]);const A={};ATTR.forEach(a=>A[a]=0);let raw=0,hab=0,lakeW=0;
+ tiles.forEach(t=>{const T=TER[t];let y=T.y;if(T.need){if(!n(T.need))y*=.3;else if(n('mat'))y*=1.2}if(t==='lake'&&n('h2'))y+=4;raw+=y;hab+=T.hab;
+  if(t==='vol')A.안전-=n('clim')?1:2;if(t==='forest')A.환경+=1;if(t==='marsh')A.환경+=1;if(t==='plain')A.건강+=1;if(t==='lake')lakeW=1;if(t==='desert')A.행복-=1});
+ A.건강+=lakeW;if(hab<2){A.건강-=2;A.행복-=2}
+ ITEMS.forEach(it=>{if(it.a&&n(it.k))A[it.a]+=3});if(n('arm'))A.행복-=1;if(n('heat'))A.환경-=1;if(n('ai'))A.교육+=1;if(n('clim'))A.환경+=2;
+ const prod=Math.round(raw*(1+.2*n('eng')+.1*n('ai')));
+ const prodLess=Math.round(raw*(1+.2*Math.max(0,n('eng')-1)+.1*n('ai')));
+ let cons=20+tiles.length;ITEMS.forEach(it=>cons+=it.cost*n(it.k));if(n('grid'))cons*=.85;cons=Math.round(cons);
+ const lo=ATTR.slice().sort((a,b)=>A[a]-A[b])[0],hi=ATTR.slice().sort((a,b)=>A[b]-A[a])[0];
+ return{prod,cons,prodLess,A,lo,hi,hab}}
+function connected(set){const a=[...set];if(a.length<2)return true;const seen=new Set([a[0]]),st=[a[0]];while(st.length){const c=st.pop(),x=c%6,y=(c-x)/6;[[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{const nx=x+dx,ny=y+dy,k=ny*6+nx;if(nx>=0&&nx<6&&ny>=0&&ny<6&&set.has(k)&&!seen.has(k)){seen.add(k);st.push(k)}})}return seen.size===a.length}
+const M_SETTLE={id:'settle',ic:'🚀',year:'2024학년도 형식',title:'외계 정착 탐험 계획',prep:35,ans:25,
+ desc:'정착지 타일과 특별 아이템을 골라 시뮬레이션하고, 내 계획에 따라 달라지는 맞춤형 질문 8개에 답합니다.',
+ gen(r){const w=r.pick(WORLDS);const bag=[];[['vol',4],['lake',5],['marsh',5],['desert',6],['forest',9],['plain',7]].forEach(([k,c])=>{for(let i=0;i<c;i++)bag.push(k)});
+  return{w,map:r.shuffle(bag),S:{tiles:new Set(),items:{},sim:null,sims:0}}},
+ brief(d){return `<div class="q">[기본 임무] 새로운 외계 정착 후보지 ‘${d.w.P}’의 정보가 일부 확보되었다. 정보를 바탕으로 <u>정착지(서로 맞닿은 타일 최대 7칸)</u>를 정하고, 탐험선에 실을 <u>특별 아이템을 10가지 이내</u>로 골라 본인만의 탐험 계획을 수립하라.</div>
+  <ul class="rule"><li>에너지 자원 ‘${d.w.R}’을 채굴해 <b>에너지 생산량이 소비량 이상</b>이 되어야 하고, 지속 가능한 거주 여건을 마련해야 한다.</li><li>화면에는 에너지 생산량·소비량만 숫자로 나온다. 행복·건강·치안·안전·교육·환경은 <b>숫자로 보이지 않으며</b> ‘관찰 기록’으로만 짐작할 수 있다.</li><li>기본 장비는 따로 실려 있고, 행성 환경은 지구와 비슷하다. 합리적인 근거가 있다면 자유롭게 가정해도 된다.</li><li>시뮬레이션은 몇 번이든 할 수 있다. 면접실에 들어가면 계획이 확정되고 그 계획에 맞춘 질문이 나온다.</li></ul>`},
+ work(d,el){const S=d.S;const cnt=()=>Object.values(S.items).reduce((a,b)=>a+b,0);
+  const draw=()=>{const sm=S.sim;el.innerHTML=`<div class="grid g2"><div><h3>정착 후보지 (${S.tiles.size}/7칸)</h3><div class="map" style="grid-template-columns:repeat(6,1fr)">${d.map.map((t,i)=>`<div class="tile ${S.tiles.has(i)?'sel':''}" data-t="${i}" style="background:${TER[t].c}"><span class="e">${TER[t].e}</span>${TER[t].n}</div>`).join('')}</div>
+   ${connected(S.tiles)?'':'<div class="hint">⚠ 선택한 타일이 서로 이어져 있지 않습니다. 정착지는 맞닿은 칸으로 구성해야 합니다.</div>'}</div>
+   <div><h3>지역 정보</h3><table>${Object.values(TER).map(T=>`<tr><td>${T.e} <b>${T.n}</b></td><td>${d.w.R} ${T.y}</td><td class="l sm">${T.d}</td></tr>`).join('')}</table></div></div>
+   <h3 style="margin-top:18px">특별 아이템 (${cnt()}/10)</h3><div class="items">${ITEMS.map(it=>{const c=S.items[it.k]||0;return `<div class="item ${c?'on':''}" data-k="${it.k}"><b>${it.lab?'🔬 ':''}${it.n}${c>1?' ×'+c:''}${c===1&&it.multi?' ×1':''}</b>${it.d} · 소비 +${it.cost}</div>`}).join('')}</div>
+   <p class="xs mute">아이템을 누르면 선택/해제됩니다. 엔지니어는 누를 때마다 1명씩 늘고 4명 다음에 0명으로 돌아갑니다.</p>
+   <div class="row noprint"><button class="btn d" data-a="sim">▶ 시뮬레이션 실행</button><span class="mute sm">실행 횟수 ${S.sims}회</span></div>
+   ${sm?`<div class="card" style="margin-top:12px;background:#f4f8ff"><div class="row" style="gap:24px"><div>에너지 생산량 <b style="font-size:24px;color:${sm.prod>=sm.cons?'var(--ok)':'var(--bad)'}">${sm.prod}</b></div><div>에너지 소비량 <b style="font-size:24px">${sm.cons}</b></div><div><span class="tag ${sm.prod>=sm.cons?'gn':'r'}">${sm.prod>=sm.cons?'수급 충족':'에너지 부족'}</span></div></div>
+   <div class="sm" style="margin-top:6px"><b>관찰 기록</b> · ${OBS[sm.lo][0]} / ${OBS[sm.hi][1]}</div></div>`:''}`};
+  el.onclick=e=>{const t=e.target.closest('[data-t]'),k=e.target.closest('[data-k]'),a=e.target.closest('[data-a]');
+   if(t){const i=+t.dataset.t;if(S.tiles.has(i))S.tiles.delete(i);else if(S.tiles.size<7)S.tiles.add(i);S.sim=null}
+   else if(k){const it=ITEMS.find(x=>x.k===k.dataset.k),c=S.items[it.k]||0;if(it.multi){if(c>=it.multi)delete S.items[it.k];else if(cnt()<10)S.items[it.k]=c+1}else{if(c)delete S.items[it.k];else if(cnt()<10)S.items[it.k]=1}S.sim=null}
+   else if(a){S.sim=simSettle(d);S.sims++}else return;draw()};draw()},
+ summary(d){const S=d.S;if(!S.sim)S.sim=simSettle(d);const tc={};[...S.tiles].forEach(i=>{const n=TER[d.map[i]].n;tc[n]=(tc[n]||0)+1});
+  return `<b>확정된 탐험 계획</b> · 정착지: ${Object.entries(tc).map(([n,c])=>n+' '+c+'칸').join(', ')||'선택 없음'} · 아이템: ${ITEMS.filter(it=>S.items[it.k]).map(it=>it.n+(S.items[it.k]>1?' ×'+S.items[it.k]:'')).join(', ')||'선택 없음'} · 생산 ${S.sim.prod} / 소비 ${S.sim.cons}`},
+ fixed:true,
+ follow(d,r){const S=d.S,sm=S.sim||simSettle(d),n=k=>S.items[k]||0;const Q=[
+  ['공통 1','본인의 탐험 계획을 설명해 주세요. 최종적으로 고른 정착지와 특별 아이템은 각각 왜 선택했나요?'],
+  ['공통 2','정착 계획에는 여러 위험이 따릅니다. 어떤 잠재적 위험을 예상했고, 각각 어떻게 대응할 수 있을까요?'],
+  ['공통 3','계획을 세우며 결정하기 가장 어려웠던 부분은 무엇이었나요? 그 상황에서 무엇에 우선순위를 두었습니까?'],
+  ['공통 4','이 계획을 실행하려면 대중과 탐험위원회의 지지가 필요합니다. 설득할 시간이 1년 주어진다면 무엇을 하겠습니까?'],
+  ['공통 5',S.sims>1?'시뮬레이션 결과는 본인의 예상과 잘 맞았나요? 맞았다면 — 모두가 내 생각과 같은 이야기만 해 줄 때, 더 나은 결론을 위해 추가로 할 수 있는 일은 무엇일까요? 달랐다면 — 어떤 점이 달랐고, 예상과 결과 중 어느 쪽이 더 타당하다고 봅니까?':'시뮬레이션을 거의 돌려 보지 않고 계획을 확정했습니다. 본인의 예상을 어떻게 검증했나요? 검증 없이 결정해야 하는 상황에서는 무엇에 기대어 판단합니까?'],
+  ['공통 6','성공적인 임무 수행에 필요할 것 같은 아이템 한 가지를 자유롭게 새로 제안해 보세요.']];
+  const ind=[];
+  if(sm.prod<sm.cons)ind.push(['개별 · 에너지','탐험대는 정착에 필요한 에너지를 확보하지 못해 정착에 실패했습니다. 성공적인 계획을 세우지 못한 이유는 무엇이라고 생각하나요? 지금 한 가지만 바꿀 수 있다면요?']);
+  else if(n('eng')&&sm.prodLess>=sm.cons)ind.push(['개별 · 에너지','계획대로라면 엔지니어를 한 명 줄여도 소비량을 충분히 감당할 수 있습니다. 그런데도 엔지니어를 더 고른 이유는 무엇인가요? 의도적인 초과 생산입니까?']);
+  else ind.push(['개별 · 에너지',`생산량(${sm.prod})과 소비량(${sm.cons})의 여유가 ${sm.prod-sm.cons}뿐입니다. 여유분이 적은 계획의 위험은 무엇이고, 어떻게 대비하겠습니까?`]);
+  const labs=ITEMS.filter(it=>it.lab&&n(it.k));
+  if(labs.length){const L=r.pick(labs);ind.push(['개별 · 연구소',`탐험대에 ${L.n}를 포함한 이유를 자세히 설명해 주세요. 에너지 수급과 지속 가능한 정착 생활에 어떤 역할을 할 것으로 기대했나요?`])}
+  else ind.push(['개별 · 연구소','탐험대에 연구소가 없어 앞으로 에너지 기술 개발에 어려움이 예상됩니다. 연구소를 넣지 않은 이유와, 정착지의 에너지 생산 기술을 크게 개선할 대안을 설명해 주세요.']);
+  const ex=['med','adm','edu','arm','cul','eco'];
+  if(ex.every(k=>n(k)))ind.push(['개별 · 속성','의료·행정·교육·방위·여가문화·환경을 모두 고르게 고려한 계획입니다. 그중 지속 가능한 정착에 가장 중요한 세 가지는 무엇이라고 생각하나요?']);
+  else if(sm.A[sm.lo]<=0)ind.push(['개별 · 속성',`계획대로라면 탐험대의 ‘${sm.lo}’을(를) 유지하기 어려워 보입니다. 정착지에서 ${sm.lo}을(를) 위해 어떤 방안을 마련할 수 있을까요?`]);
+  else ind.push(['개별 · 속성',`계획을 보면 ‘${sm.hi}’을(를) 특히 중요하게 여긴 것 같습니다. ${sm.hi}이(가) 성공적인 정착에 왜 특히 중요합니까?`]);
+  const twist=r.pick(['정착 2년 차, 예고 없는 지각 변동으로 선택한 타일 하나를 잃게 되었습니다. 어느 칸을 포기하고 계획을 어떻게 고치겠습니까?','지구에서 300명의 추가 이주민을 받아 달라는 요청이 왔습니다. 받아들이겠습니까? 받아들인다면 계획에서 무엇을 바꿔야 합니까?','정착지 아래에서 이 행성의 토착 미생물 생태계가 발견되었습니다. 채굴을 계속하겠습니까?']);
+  return Q.concat(r.sample(ind,2),[['돌발 상황',twist]])},
+ intent:['에너지 확보를 위한 공학적 사고와, 지속 가능한 사회를 위한 인문·사회적 사고를 함께 발휘','화면에 보이는 정보와 보이지 않는 속성을 구분해 관찰·추리하는 능력','균형과 집중 사이에서 선택하고 판단하는 의사결정 능력','조건이 바뀌었을 때 기존 계획을 유연하게 수정하는 능력','자신의 계획을 비판적으로 검토하는 열린 자세'],
+ tip:'몇 문항에 답했는지는 중요하지 않습니다. 문항마다 2~4분 안에 "선택 → 이유 → 포기한 것 → 보완책"을 또렷하게 말하는 연습을 하세요. 다수가 고를 전형적인 조합에서 벗어난 이유 있는 선택이 좋은 평가를 받습니다.'
+};
+
+/* ============ ④ 발전소 배치 (2022 형식) ============ */
+const VNAMES=[['솔마루','인구 4만 · 20~30대 비중 높음 · 반도체 공장과 대학'],['물빛','인구 2만 · 어업과 양식업 중심 · 앞바다가 일터'],['새터','인구 6만 · 60대 이상 45% · 농업과 요양 시설'],['한울','인구 3만 · 관광업 중심 · 철새 탐조 명소'],['달내','인구 5만 · 신혼부부·영유아 가구 많음 · 물류 단지']];
+const PLANTS={sol:{n:'태양광',e:'☀️',d:'출력 = 일사량 × 5 · 탄소 배출 없음 · 넓은 면적 필요, 해상 설치는 비용 2배'},wind:{n:'풍력',e:'🌬️',d:'출력 = 풍속 × 5 · 탄소 배출 없음 · 소음, 조류·해양 생물 영향'},fos:{n:'화석연료',e:'🏭',d:'출력 100 · 유전 칸에만 설치 · 탄소·미세먼지가 바람 방향으로 확산'},nuc:{n:'원자력',e:'⚛️',d:'출력 200 · 바다와 맞닿은 육지에만 설치 · 사고 시 방사성 물질이 해류·바람을 따라 이동'}};
+const DIRS={'→':[1,0],'←':[-1,0],'↓':[0,1],'↑':[0,-1]};
+const M_POWER={id:'power',ic:'🗺️',year:'2022학년도 형식',title:'에너지 도시 설계',prep:30,ans:25,
+ desc:'지도·마을 카드·일사량/풍속/해류 데이터를 조합해 발전 설비의 위치를 정하고 이유를 설명합니다.',
+ gen(r){const N=10,cells=[];const sides=r.pick([[1,1],[0,1],[1,0],[0,0]]);const dA=[],dB=[];for(let i=0;i<N;i++){dA.push(1+(r.f()<.55?1:0));dB.push(1+(r.f()<.55?1:0))}
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){const sx=sides[0]?x<dA[y]:x>=N-dA[y],sy=sides[1]?y>=N-dB[x]:y<dB[x];cells.push({x,y,t:sx||sy?'sea':'land'})}
+  const at=(x,y)=>x>=0&&x<N&&y>=0&&y<N?cells[y*N+x]:null;const nb=c=>[[1,0],[-1,0],[0,1],[0,-1]].map(([a,b])=>at(c.x+a,c.y+b)).filter(Boolean);
+  const g1=r.pick([[1,0],[-1,0],[0,1],[0,-1],[1,1],[-1,1]]),g2=r.pick([[1,0],[-1,0],[0,1],[0,-1]]);
+  const pj=(c,g)=>{const v=c.x*g[0]+c.y*g[1],mn=Math.min(0,9*g[0])+Math.min(0,9*g[1]),mx=Math.max(0,9*g[0])+Math.max(0,9*g[1]);return(v-mn)/(mx-mn)};
+  cells.forEach(c=>{c.ins=1+Math.round(4*pj(c,g1));c.ws=Math.max(1,Math.min(5,1+Math.round(2.6*pj(c,g2))+(c.t==='sea'?1:0)))});
+  const land=()=>r.shuffle(cells.filter(c=>c.t==='land'));
+  const vils=[];const vn=r.sample(VNAMES,3);for(const c of land()){if(vils.every(v=>Math.abs(v.x-c.x)+Math.abs(v.y-c.y)>=5)){c.t='vil';c.v=vils.length;vils.push(c);if(vils.length===3)break}}
+  while(vils.length<3){const c=land()[0];c.t='vil';c.v=vils.length;vils.push(c)}
+  land().slice(0,3).forEach(c=>c.t='oil');
+  let m=land()[0];for(let i=0;i<5&&m;i++){m.t='mt';m=r.pick(nb(m).filter(c=>c.t==='land'))}
+  cells.filter(c=>c.t==='land').sort((a,b)=>b.ins-a.ins||r.f()-.5).slice(0,3).forEach(c=>c.t='bird');
+  r.shuffle(cells.filter(c=>c.t==='sea')).slice(0,2).forEach(c=>c.whale=1);
+  cells.forEach(c=>{c.coast=c.t!=='sea'&&nb(c).some(k=>k.t==='sea')});
+  return{N,cells,vils:vils.map((c,i)=>({n:vn[i][0],d:vn[i][1],need:[60,80,100][i],x:c.x,y:c.y})),wind:r.pick(Object.keys(DIRS)),cur:r.pick(Object.keys(DIRS)),S:{plants:{},tool:'sol',layer:'none'}}},
+ brief(d){return `<p>‘KENTECH 시’에는 세 마을 ${d.vils.map(v=>`<b>${v.n}</b>`).join(', ')}이(가) 있다. 지도, 마을 카드, 발전 설비 카드, 데이터(일사량·풍속과 풍향·해류)를 모두 활용해 답하시오.</p>
+  <div class="q">1. 네 종류의 발전 설비를 <u>1개씩</u> 설치하려 한다. 설비별로 경제·사회·환경 측면에서 가장 적합하다고 생각하는 좌표(예: A, 1)를 하나씩 고르고 이유를 설명하시오. <small>(한 좌표에 발전소 1개 · 전선 비용은 무시)</small></div>
+  <div class="q">2. ${d.vils.map(v=>`${v.n} ${v.need}`).join(', ')}의 전기 에너지를 공급해야 한다. 경제·사회·환경을 종합적으로 고려해 발전 설비를 배치하고 마을과 연결하시오. <small>(설비 종류와 개수는 자유 · 전선은 가로/세로로만 연결되며 길수록 비용 증가)</small></div>
+  <ul class="rule"><li>모범 답안은 없다. 가능한 무수한 조합 가운데 본인의 선택과 그 근거가 평가 대상이다.</li><li>1번과 2번의 배치는 달라도 된다. 지도는 하나이므로 1번 배치를 메모한 뒤 지우고 2번을 구성해 보자.</li></ul>`},
+ work(d,el){const S=d.S,N=d.N;const out=(c,p)=>p==='sol'?c.ins*5:p==='wind'?c.ws*5:p==='fos'?100:200;
+  const ok=(c,p)=>c.t==='vil'||c.t==='mt'?'마을·산에는 설치할 수 없습니다.':p==='fos'&&c.t!=='oil'?'화석연료 발전소는 유전(🛢️) 칸에만 설치할 수 있습니다.':p==='nuc'&&!(c.coast&&c.t!=='sea')?'원자력 발전소는 바다와 맞닿은 육지에만 설치할 수 있습니다.':p==='nuc'&&c.t==='sea'?'원자력 발전소는 육지에 설치합니다.':'';
+  let msg='';const draw=()=>{const ps=Object.entries(S.plants);let tot=0,wire=0;const cnt={};ps.forEach(([i,p])=>{const c=d.cells[i];tot+=out(c,p);cnt[p]=(cnt[p]||0)+1;wire+=Math.min(...d.vils.map(v=>Math.abs(v.x-c.x)+Math.abs(v.y-c.y)))});
+   const bg=c=>S.layer==='ins'?`hsl(42,95%,${92-c.ins*9}%)`:S.layer==='ws'?`hsl(205,75%,${94-c.ws*9}%)`:c.t==='sea'?'#bfe0f7':c.t==='mt'?'#c9c2b4':'#dcefc6';
+   const ic=c=>S.plants[c.y*N+c.x]?PLANTS[S.plants[c.y*N+c.x]].e:c.t==='vil'?'🏘️':c.t==='mt'?'⛰️':c.t==='oil'?'🛢️':c.t==='bird'?'🕊️':c.whale?'🐋':'';
+   el.innerHTML=`<div class="grid g2"><div><div class="row noprint" style="margin-bottom:8px"><b>설치할 설비</b>${Object.entries(PLANTS).map(([k,p])=>`<button class="btn s ${S.tool===k?'':'g'}" data-tool="${k}">${p.e} ${p.n}</button>`).join('')}</div>
+   <div class="row noprint" style="margin-bottom:8px"><b>데이터 겹쳐 보기</b>${[['none','지형'],['ins','일사량'],['ws','풍속']].map(([k,n])=>`<button class="btn s ${S.layer===k?'d':'g'}" data-layer="${k}">${n}</button>`).join('')}<button class="btn s g" data-a="clear">모두 지우기</button></div>
+   <div class="pm"><div></div>${'ABCDEFGHIJ'.split('').map(l=>`<div class="hdc">${l}</div>`).join('')}${d.cells.map((c,i)=>`${c.x===0?`<div class="hdc">${c.y+1}</div>`:''}<div class="pc" data-c="${i}" style="background:${bg(c)}" title="${'ABCDEFGHIJ'[c.x]}, ${c.y+1}">${ic(c)}${S.layer!=='none'?`<small>${S.layer==='ins'?c.ins:c.ws}</small>`:''}</div>`).join('')}</div>
+   <div class="legend"><span>🏘️ 마을</span><span>⛰️ 산</span><span>🛢️ 유전</span><span>🕊️ 철새 서식지</span><span>🐋 고래 출몰 해역</span><span style="background:#bfe0f7;padding:0 6px;border-radius:4px">바다</span></div>
+   <div class="sm"><b>풍향</b> ${d.wind} (연중 주된 바람) · <b>해류</b> ${d.cur} · 일사량·풍속은 1(약)~5(강)</div>
+   ${msg?`<div class="hint">${msg}</div>`:''}
+   <div class="card" style="margin-top:10px;background:#f4f8ff"><b>현재 배치</b> · ${ps.length?Object.entries(cnt).map(([p,c])=>PLANTS[p].n+' '+c+'기').join(', '):'없음'}<br>총 발전량 <b style="font-size:20px">${tot}</b> / 총 수요 240 · 전선 길이 합 <b>${wire}</b>칸 <span class="xs mute">(각 발전소에서 가장 가까운 마을까지 가로+세로 거리의 합. 다른 연결 방식을 제안해도 좋습니다.)</span>
+   <div class="xs">${ps.map(([i,p])=>`${PLANTS[p].e}${'ABCDEFGHIJ'[d.cells[i].x]}${d.cells[i].y+1}(${out(d.cells[i],p)})`).join(' · ')}</div></div></div>
+   <div><h3>마을 카드</h3>${d.vils.map(v=>`<div class="fq" style="margin:0 0 8px"><b>🏘️ ${v.n}</b> <span class="tag">${'ABCDEFGHIJ'[v.x]}, ${v.y+1}</span><span class="tag o">필요 전력 ${v.need}</span><div class="sm">${v.d}</div></div>`).join('')}
+   <h3 style="margin-top:14px">발전 설비 카드</h3>${Object.values(PLANTS).map(p=>`<div class="fq" style="margin:0 0 8px"><b>${p.e} ${p.n}</b><div class="sm">${p.d}</div></div>`).join('')}</div></div>`};
+  el.onclick=e=>{const t=e.target.closest('[data-tool]'),l=e.target.closest('[data-layer]'),c=e.target.closest('[data-c]'),a=e.target.closest('[data-a]');msg='';
+   if(t)S.tool=t.dataset.tool;else if(l)S.layer=l.dataset.layer;else if(a)S.plants={};else if(c){const i=+c.dataset.c;if(S.plants[i])delete S.plants[i];else{const m=ok(d.cells[i],S.tool);if(m)msg='⚠ '+m;else S.plants[i]=S.tool}}else return;draw()};draw()},
+ summary(d){const ps=Object.entries(d.S.plants);return ps.length?'마지막 배치: '+ps.map(([i,p])=>`${PLANTS[p].e}${PLANTS[p].n} ${'ABCDEFGHIJ'[d.cells[i].x]}${d.cells[i].y+1}`).join(' · '):'지도에 남아 있는 배치가 없습니다. 메모를 보며 설명하세요.'},
+ follow(d,r){const used=new Set(Object.values(d.S.plants)),v=r.pick(d.vils),v2=d.vils.filter(x=>x!==v)[0];const L=[
+  ['자료 활용',`풍향(${d.wind})과 해류(${d.cur}) 데이터는 어느 설비의 위치를 정할 때 사용했나요? 그 데이터를 무시했다면 위치가 어떻게 달라졌을까요?`],
+  ['가치 판단',`어느 위치를 골라도 피해를 보는 마을이 생긴다면, ${v.n}과(와) ${v2.n} 중 어느 쪽의 부담을 줄이는 것이 옳다고 봅니까? 마을 카드의 정보를 근거로 말해 주세요.`],
+  ['조건 변경','10년 뒤 세 마을의 전력 수요가 지금의 두 배가 된다면, 지금 배치에서 무엇을 추가하거나 바꾸겠습니까?'],
+  ['조건 변경','철새 서식지와 고래 출몰 해역이 법적 보호구역으로 지정되어 주변 1칸까지 개발이 금지된다면 계획은 어떻게 달라집니까?'],
+  ['수학적 사고','전선 비용과 발전량 사이에서 어떻게 균형을 잡았나요? 숫자로 비교한 과정이 있다면 설명해 주세요.'],
+  ['소통','본인의 배치에 가장 강하게 반대할 주민은 누구일까요? 그 주민을 만나면 뭐라고 말하겠습니까?'],
+  ['사고 확장','이 도시에 다섯 번째 발전 방식을 하나 도입할 수 있다면 무엇을, 어디에 두겠습니까?'],
+  ['위험 관리','발전소 한 곳이 한 달간 멈춘다면 어느 발전소가 멈출 때 피해가 가장 큽니까? 대비책은 무엇입니까?']];
+  if(!used.has('nuc'))L.unshift(['근거 확인','배치에 원자력 발전소가 없습니다. 출력이 가장 큰 설비를 쓰지 않은 이유는 무엇인가요? 어떤 조건이 충족되면 사용하겠습니까?']);
+  else L.unshift(['근거 확인','원자력 발전소의 위치를 정할 때 가장 무겁게 고려한 위험은 무엇이었고, 그 위험을 어떻게 줄였나요?']);
+  if(used.has('fos'))L.unshift(['근거 확인','화석연료 발전소를 포함했습니다. 미세먼지와 탄소 배출 문제에도 사용하기로 한 이유는 무엇입니까?']);
+  return L},
+ intent:['글·시각 자료·데이터 등 다양한 형태의 정보를 종합 분석·추론','주어진 정보와 제한 조건 안에서 합리적 결론 도출','사회·환경·경제의 지속가능성을 함께 고려하는지 확인','수학적 사고력(발전량·거리 비교)','추가 질문을 통해 사고를 확장하는 능력'],
+ tip:'2022학년도 실제 예시 답변도 "풍력만 극단적으로 쓴 사례"였습니다. 균형 잡힌 답이 정답이 아니라, 선택의 이유와 감수한 단점을 스스로 설명할 수 있는 답이 좋은 답입니다.'
+};
+
+/* ============ ⑤ 국가 10년 발전 전략 (2023 형식) ============ */
+const ACTS=[
+ ['양자 연구단지',[4,0,-1],'대규모 연구단지를 조성한다. 인재가 모이지만 부지 조성으로 숲 일부가 사라진다.'],
+ ['국제 공동연구소',[3,1,0],'여러 나라의 연구자가 함께 일하는 연구소를 연다. 다양한 생각이 섞이고 국가 위상이 오른다.'],
+ ['전 국민 건강 돌봄',[0,3,0],'누구나 저렴하게 치료받는 의료 체계를 만든다. 감염병 대응 능력도 갖추게 된다.'],
+ ['간척 농지 확대',[1,3,-2],'갯벌을 메워 농지를 만든다. 먹거리가 풍부해지지만 갯벌 생물이 서식지를 잃는다.'],
+ ['생활 체육 공원',[0,3,-1],'도시마다 큰 체육 공원을 짓는다. 주민 행사가 늘지만 녹지 일부를 깎아야 한다.'],
+ ['숲 되살리기',[0,0,3],'벌목과 사냥을 제한하고 출입 제한 구역을 넓힌다.'],
+ ['영재 집중 양성',[5,-1,-1],'소수 영재에게 자원을 몰아준다. 과학이 도약하지만 다수 학생은 소외감을 느낀다.'],
+ ['초고속 교통망',[3,2,-2],'전국을 한 시간 생활권으로 묶는다. 건설에 희귀 광물과 넓은 부지가 든다.'],
+ ['스마트 신도시 재개발',[2,4,-3],'모든 주거지를 한꺼번에 재개발한다. 생활은 편해지지만 자원 소모가 크다.'],
+ ['탄소 감축 협약',[-2,2,3],'화석연료 시설을 줄이고 공단을 공원으로 바꾼다. 일부 산업은 위축된다.'],
+ ['주 4일 근무제',[-1,4,0],'일하는 날을 줄인다. 삶의 만족은 오르지만 연구·생산 속도는 느려진다.'],
+ ['해양 보호구역',[0,-1,4],'넓은 바다에서 어업과 운송을 금지한다. 어민의 생계가 어려워진다.'],
+ ['자원 순환 공장',[2,0,2],'폐기물을 원료로 되돌리는 공장을 짓는다.'],
+ ['우주 탐사 계획',[5,0,-2],'달 기지 건설에 도전한다. 로켓 발사가 대기를 오염시킨다.'],
+ ['기초 교육 개혁',[2,2,0],'모든 학생이 과학과 예술을 함께 배우도록 교육 과정을 바꾼다.'],
+ ['원전 수출 산업',[4,1,-3],'원자력 기술을 키워 수출한다. 폐기물 처리장을 둘러싼 갈등이 생긴다.']];
+const IDX=['과학','행복','환경'];
+const GAPNOTE={과학:'과학지수 격차 → 무역·외교 협상력과 국방력 열세',행복:'행복지수 격차 → 젊은 인구의 해외 유출',환경:'환경지수 격차 → 오염을 둘러싼 국경 분쟁, 은퇴 인구의 이주'};
+function nationCalc(d){const S=d.S;let v=[3,3,3];const rows=[];let med=false,expo=false;
+ for(let y=0;y<10;y++){const a=S.plan[y];if(a>=0){v=v.map((x,i)=>x+ACTS[a][1][i]);if(a===2)med=true}
+  if(y+1===d.ep&&!med)v[1]-=3;if(y+1===d.ex&&v[0]>=Math.max(d.nb[0].t[y][0],d.nb[1].t[y][0])){v[1]+=2;expo=true}
+  rows.push(v.slice())}
+ let warn=0,dang=0;const flags=rows.map((row,y)=>row.map((x,i)=>{const g=Math.max(d.nb[0].t[y][i],d.nb[1].t[y][i])-x;if(g>=6){dang++;return 2}if(g>=4){warn++;return 1}return 0}));
+ return{rows,flags,warn,dang,med,expo}}
+const M_NATION={id:'nation',ic:'🌏',year:'2023학년도 형식',title:'국가 10년 발전 전략',prep:35,ans:25,
+ desc:'이웃 두 나라의 10년 지수를 분석하고, 과학·행복·환경의 균형과 집중 사이에서 우리나라의 실행 계획을 세웁니다.',
+ gen(r){const foc=r.sample([0,1,2],2);const mk=f=>{let v=[3,3,3];const t=[];for(let y=0;y<10;y++){v=v.map((x,i)=>x+(i===f?r.pick([0,1,1,2]):r.pick([-1,0,0,0,1])));t.push(v.slice())}return t};
+  const names=r.pick([['가람국','나람국','다람국'],['한빛국','두빛국','세빛국'],['솔국','강국','뫼국']]);
+  return{me:names[0],nb:[{n:names[1],t:mk(foc[0]),f:foc[0]},{n:names[2],t:mk(foc[1]),f:foc[1]}],acts:r.sample(ACTS.map((a,i)=>i),12).sort((a,b)=>a-b),lost:-1,ep:r.int(4,6),ex:r.int(8,10),S:{plan:Array(10).fill(-1)},_l:0}},
+ brief(d){if(!d._l){d.lost=d.acts.filter(a=>a!==2)[d.acts.length%7];d._l=1}
+  return `<p>세 나라 <b>${d.me}</b>, ${d.nb[0].n}, ${d.nb[1].n}은(는) 국경을 맞대고 있다. 각 나라의 발전 수준은 <b>과학·행복·환경</b> 세 지수로 나타낸다(세 나라 모두 3에서 시작). 당신은 ${d.me}의 지도자다.</p>
+  <div class="q">1. 자료 1(이웃 두 나라의 10년 지수)을 보고 두 나라의 발전 방향을 비교·분석하시오.</div>
+  <div class="q">2. 실행 항목 카드를 <u>해마다 하나씩</u> 골라 ${d.me}의 10년 실행 계획을 세우고, 그렇게 설계한 이유를 설명하시오.</div>
+  <ul class="rule"><li>같은 실행 항목은 한 번만 쓸 수 있다. 괄호의 숫자는 (과학, 행복, 환경) 지수 변화다.</li><li>어느 해든 이웃 나라보다 지수가 <b>4 이상 낮으면 ‘경계’</b>, <b>6 이상 낮으면 ‘위험’</b> 상황이 된다. ${Object.values(GAPNOTE).join(' / ')}</li><li><b>${d.ep}년 차에 전염병</b>이 돈다. 그 전에 의료 체계를 갖추지 못했다면 행복지수가 3 떨어진다.</li><li><b>${d.ex}년 차에 세계박람회</b>가 열린다. 그해 과학지수가 두 이웃 이상이면 개최국이 되어 행복지수가 2 오른다.</li><li>실행 항목 한 장은 설명이 유실되어 숫자만 남아 있다.</li></ul>`},
+ work(d,el){const S=d.S;const draw=()=>{const c=nationCalc(d);const used=new Set(S.plan.filter(a=>a>=0));
+  el.innerHTML=`<h3>자료 1 · 이웃 나라의 10년 지수</h3><div class="scroll"><table><tr><th>연차</th>${[1,2,3,4,5,6,7,8,9,10].map(y=>`<th>${y}</th>`).join('')}</tr>
+  ${d.nb.map(n=>IDX.map((ix,i)=>`<tr><td class="l"><b>${n.n}</b> ${ix}</td>${n.t.map(v=>`<td>${v[i]}</td>`).join('')}</tr>`).join('')).join('')}</table></div>
+  <h3 style="margin-top:18px">자료 2 · 실행 항목 카드</h3><div class="items">${d.acts.map(a=>`<div class="item ${used.has(a)?'on':''}" style="cursor:default"><b>${ACTS[a][0]} (${ACTS[a][1].join(', ')})</b>${a===d.lost?'<span class="mute">〔설명 유실〕</span>':ACTS[a][2]}</div>`).join('')}</div>
+  <h3 style="margin-top:18px">${d.me} 10년 실행 계획</h3><div class="scroll"><table><tr><th>연차</th><th class="l">실행 항목</th>${IDX.map(i=>`<th>${i}</th>`).join('')}<th class="l">비고</th></tr>
+  ${S.plan.map((a,y)=>`<tr><td>${y+1}</td><td class="l"><select data-y="${y}"><option value="-1">— 선택 —</option>${d.acts.map(k=>`<option value="${k}" ${a===k?'selected':''} ${used.has(k)&&a!==k?'disabled':''}>${ACTS[k][0]} (${ACTS[k][1].join(', ')})</option>`).join('')}</select></td>
+  ${c.rows[y].map((v,i)=>`<td class="${c.flags[y][i]===2?'flagD':c.flags[y][i]===1?'flagW':''}">${v}</td>`).join('')}<td class="l sm">${y+1===d.ep?'🦠 전염병'+(c.rows[y]&&!S.plan.slice(0,y+1).includes(2)?' (행복 −3)':' (대비 완료)'):''}${y+1===d.ex?'🎪 세계박람회'+(c.expo?' (개최 성공 +2)':''):''}${c.flags[y].map((f,i)=>f?` ${IDX[i]} ${f===2?'위험':'경계'}`:'').join('')}</td></tr>`).join('')}</table></div>
+  <p class="sm"><span class="tag o">경계 ${c.warn}회</span><span class="tag r">위험 ${c.dang}회</span> 최종 지수: 과학 ${c.rows[9][0]} · 행복 ${c.rows[9][1]} · 환경 ${c.rows[9][2]}</p>`};
+  el.onchange=e=>{if(e.target.dataset.y!=null){S.plan[+e.target.dataset.y]=+e.target.value;draw()}};draw()},
+ summary(d){const c=nationCalc(d);return `<b>${d.me}의 계획</b> · ${d.S.plan.map((a,y)=>a>=0?`${y+1}년 ${ACTS[a][0]}`:'').filter(Boolean).join(' → ')||'미작성'}<br>최종 지수 과학 ${c.rows[9][0]} · 행복 ${c.rows[9][1]} · 환경 ${c.rows[9][2]} / 경계 ${c.warn}회 · 위험 ${c.dang}회`},
+ follow(d,r){const c=nationCalc(d),f=c.rows[9],hi=IDX[f.indexOf(Math.max(...f))],lo=IDX[f.indexOf(Math.min(...f))];const n=r.pick(d.nb);const L=[
+  ['의도 확인',`${d.me}의 지도자로서 가장 중요하게 생각한 것은 무엇이었나요? 최종적으로 ${hi}지수가 가장 높고 ${lo}지수가 가장 낮은데, 의도한 결과입니까?`],
+  ['시간의 축','같은 항목을 고르더라도 실행 시점에 따라 과정은 달라집니다. 항목의 순서를 정할 때 어떤 원칙을 썼나요?'],
+  ['조건 변경','이웃 두 나라의 지수를 전혀 몰랐다면 계획이 달라졌을까요? 무엇이 어떻게 달라졌을지 말해 보세요.'],
+  ['상상',`설명이 유실된 실행 항목 ‘${ACTS[d.lost][0]} (${ACTS[d.lost][1].join(', ')})’에는 어떤 내용이 적혀 있었을 것 같나요? 숫자에 어울리는 정책을 구체적으로 상상해 보세요.`],
+  ['이해관계자',`본인의 실행 계획에 가장 강하게 반대할 집단은 누구일까요? 반대로 가장 지지할 집단은요?`],
+  ['협력',`${n.n}과(와) 교류한다면 무엇을 주고 무엇을 받겠습니까? 협력이 오래가려면 어떤 조건이 필요할까요?`],
+  ['실세계 확장','지구상의 나라 가운데 세 나라의 전략과 닮았다고 떠오르는 곳이 있나요?'],
+  ['재미','세 나라 중 한 곳의 국민으로 살아야 한다면 어느 나라를 고르겠습니까? 지도자일 때의 판단과 같은가요?'],
+  ['지속가능성','10년 계획이 끝난 뒤 11년 차에 가장 먼저 닥칠 문제는 무엇일까요?']];
+  if(c.warn+c.dang>0)L.unshift(['위기 대응',`계획에는 경계 ${c.warn}회, 위험 ${c.dang}회 상황이 있습니다. 실제 상황이라면 그 시기에 어떤 일이 벌어질까요? 그 기간을 더 줄일 수는 없었습니까?`]);
+  else L.unshift(['비판적 검토','경계·위험 상황이 한 번도 없는 계획입니다. 위험을 피하려고 포기한 것은 무엇이었나요? 위험을 감수할 가치가 있는 선택은 없었습니까?']);
+  if(!c.med)L.unshift(['근거 확인','전염병에 대비하지 않았습니다. 알고도 감수한 선택입니까? 그렇게 판단한 이유는 무엇인가요?']);
+  return L},
+ intent:['지속가능성의 요소(과학·행복·환경) 사이의 상충 관계를 이해하고 전략적으로 활용','이웃 국가라는 이해관계자를 고려한 협력적·종합적 사고','균형과 집중 사이의 선택과 판단','시간의 축: 의사결정 시점에 따른 영향 고려','수학적 사고력과 체계적 조합 능력'],
+ tip:'1번은 "숫자 읽기 → 해석 → 대안"의 세 단계로 답하면 좋습니다. 2번은 최종 지수보다 과정(언제 무엇을 왜)을 설명하세요. 경계·위험을 감수했다면 그 대가로 얻은 것을 말할 수 있어야 합니다.'
+};
+
+/* ============ ⑥ 신유형 예상: 예산 배분 위원회 ============ */
+const TOWNS=[['바람섬','인구 3만의 섬 도시. 전력의 65%를 육지에서 해저 케이블로 받아 온다. 주민 평균 연령 52세, 주산업은 어업과 관광.'],['은하읍','인구 4만의 내륙 분지. 폐광 이후 청년 인구가 10년 새 40% 줄었다. 여름 폭염과 겨울 한파가 심하다.'],['노을항','인구 6만의 항구 도시. 조선소가 문을 닫아 실업률 11%. 해수면 상승으로 저지대 침수가 해마다 늘고 있다.']];
+const PROPS=[
+ ['공공 풍력 단지',40,'전력 자립률 35% → 70%. 연간 전기요금 22억 절감. 어민회는 조업 구역 축소를 이유로 반대.'],
+ ['청년 창업 캠퍼스',25,'5년간 창업 60팀 유치 목표. 다른 지역 유사 사업의 5년 생존율은 28%.'],
+ ['어르신 순환버스·원격의료',15,'65세 이상 9천 명 대상. 병원까지 평균 이동 시간 70분 → 15분.'],
+ ['해안·하천 방재 시설',30,'30년에 한 번 오는 규모의 재해에 대비. 최근 10년간 큰 피해는 1회(피해액 50억).'],
+ ['데이터센터 유치',35,'정규 일자리 80개, 세수 연 12억. 도시 전체 전력 소비 30% 증가, 냉각수 대량 사용.'],
+ ['습지·갯벌 복원',10,'철새 도래지 회복, 탄소 흡수. 수익은 없으며 복원 구역 개발 영구 제한.'],
+ ['학교 AI 학습 도우미',12,'학생 4천 명 개별 맞춤 학습. 교사 연수 필요, 3년마다 기기 교체 비용 발생.'],
+ ['관광 케이블카',28,'연 방문객 30만 명 예상(민간 추정). 산 정상부 벌목 필요, 운영 적자 시 시 재정 부담.'],
+ ['공공 배터리 저장소',20,'정전 시 병원·대피소 48시간 전력 공급. 평소에는 태양광 잉여 전력 저장.'],
+ ['하수 재이용 시설',18,'가뭄 때 생활용수 20% 확보. 주민 설문에서 “마시기 꺼려진다” 47%.']];
+const VOICES=['상인회장: “당장 손님이 없는데 30년 뒤 이야기가 무슨 소용입니까.”','고3 학생: “졸업하면 다들 떠나요. 돌아올 이유를 만들어 주세요.”','어촌계장: “바다는 우리 일터입니다. 우리 의견 없이 정하지 마십시오.”','보건소 간호사: “혼자 사는 어르신들은 병원 한 번 가는 게 하루 일입니다.”','환경단체 활동가: “한번 깎은 산과 메운 갯벌은 돌아오지 않습니다.”','시 재정과장: “내년 세수는 올해보다 8% 줄 것으로 보입니다.”'];
+const M_BUDGET={id:'budget',ic:'⚖️',year:'신유형 예상',title:'예산 배분 위원회',prep:30,ans:15,
+ desc:'기출은 아니지만 같은 원리의 연습용 신유형. 한정된 예산 100을 상충하는 사업들에 나누고 근거를 발표합니다.',
+ gen(r){return{town:r.pick(TOWNS),props:r.sample(PROPS,6),voices:r.sample(VOICES,3),S:{al:[0,0,0,0,0,0]}}},
+ brief(d){const need=d.props.reduce((a,p)=>a+p[1],0);return `<p><b>${d.town[0]}</b> — ${d.town[1]}</p><p>당신은 시민 예산위원회 위원장이다. 올해 쓸 수 있는 특별 예산은 <b>100억 원</b>인데, 접수된 사업 6건을 모두 하려면 ${need}억 원이 든다.</p>
+  <div class="q">1. 100억 원을 어떻게 배분할지 정하시오. <small>(사업별 필요 예산보다 적게 배정하면 그 비율만큼만 효과가 난다고 가정한다. 0도 가능)</small></div><div class="q">2. 배분 원칙과 이유를 설명하고, 예산을 받지 못한 사업의 제안자에게 할 말을 준비하시오.</div>
+  <ul class="rule"><li>자료에 없는 내용은 합리적인 수준에서 가정할 수 있다. 사업을 묶거나 조건을 붙이는 창의적 제안도 가능하다.</li></ul>`},
+ work(d,el){const S=d.S;const draw=()=>{const sum=S.al.reduce((a,b)=>a+b,0);$('#bsum',el).innerHTML=`배정 합계 <b style="font-size:20px;color:${sum>100?'var(--bad)':'var(--ink)'}">${sum}</b> / 100억 ${sum>100?'<span class="tag r">예산 초과</span>':''}`};
+  el.innerHTML=`<h3>접수된 사업</h3><div class="scroll"><table><tr><th class="l">사업</th><th>필요</th><th class="l">자료</th><th>배정(억)</th></tr>${d.props.map((p,i)=>`<tr><td class="l"><b>${p[0]}</b></td><td>${p[1]}</td><td class="l sm">${p[2]}</td><td><input type="number" min="0" max="${p[1]}" value="${S.al[i]}" data-i="${i}" style="width:72px"></td></tr>`).join('')}</table></div>
+  <p id="bsum" style="margin:10px 0"></p><h3>공청회 발언</h3>${d.voices.map(v=>`<div class="fq" style="margin:0 0 8px">${v}</div>`).join('')}`;
+  el.oninput=e=>{if(e.target.dataset.i!=null){S.al[+e.target.dataset.i]=Math.max(0,+e.target.value||0);draw()}};draw()},
+ summary(d){return '배분안: '+d.props.map((p,i)=>`${p[0]} <b>${d.S.al[i]}</b>/${p[1]}`).join(' · ')},
+ follow(d,r){const S=d.S,z=d.props.filter((p,i)=>!S.al[i]),mx=d.props[S.al.indexOf(Math.max(...S.al))];return [
+  ['소통',z.length?`‘${r.pick(z)[0]}’에는 예산을 배정하지 않았습니다. 이 사업을 제안한 주민을 직접 만난다면 뭐라고 설명하겠습니까?`:'모든 사업에 조금씩 나누어 배정했습니다. 어느 것도 제대로 완성되지 않을 위험은 어떻게 보십니까?'],
+  ['근거 확인',`가장 많은 예산을 준 ‘${mx[0]}’의 자료 가운데 가장 믿기 어려운 숫자는 무엇이었나요? 그 숫자가 틀렸다면 결정이 바뀝니까?`],
+  ['조건 변경','발표 직전 예산이 20억 깎였습니다. 어디에서 줄이겠습니까? 그 기준은 무엇인가요?'],
+  ['조건 변경','반대로 30억이 추가로 생겼지만 한 사업에만 쓸 수 있다면 어디에 쓰겠습니까?'],
+  ['시간의 축','당장 효과가 나는 사업과 30년 뒤를 위한 사업 사이에서 어떤 비율로 나누었나요? 그 비율의 근거는요?'],
+  ['창의적 대안','예산을 쓰지 않고도 일부 문제를 해결할 수 있는 방법이 있을까요? 사업끼리 결합하는 아이디어도 좋습니다.'],
+  ['공정성','공청회에서 목소리를 내지 못한 주민은 누구일까요? 그들의 필요는 어떻게 반영할 수 있습니까?'],
+  ['검증','5년 뒤 이 배분이 옳았는지 판단하려면 어떤 지표를 보겠습니까?']]},
+ intent:['한정된 자원 안에서 상충하는 요구를 조정하는 의사결정 능력','자료의 수치와 출처를 비판적으로 읽는 능력','현재 세대와 미래 세대, 다수와 소수를 함께 고려하는 인문적 통찰','결정의 불이익을 받는 사람과 소통하는 태도'],
+ tip:'이 유형은 기출이 아니라 켄텍 창의성 면접의 공통 원리(열린 문제 · 상충하는 가치 · 자료 해석 · 후속 질문)를 적용한 연습 문제입니다. 배분 숫자보다 "원칙 한 문장"을 먼저 말해 보세요.'
+};
+
+const MISSIONS=[M_POWER,M_NATION,M_SETTLE,M_NEWS,M_TECH,M_BUDGET];
+
+/* ============ 화면 ============ */
+let M=null,T={left:0,run:false,h:null,label:''};
+function fmt(s){const m=Math.floor(s/60);return String(m).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function setTimer(min,label){clearInterval(T.h);const k=+$('#tmode').value;T.left=Math.round(min*60*k);T.label=label;T.run=false;T.off=k===0;paintTimer()}
+function paintTimer(){const el=$('#timer');if(!el)return;el.className='timer'+(!T.off&&T.left<=180?' low':'');el.innerHTML=`<span class="lb">${T.label}</span>${T.off?'--:--':fmt(T.left)}`;const b=$('#tbtn');if(b)b.textContent=T.run?'⏸ 일시정지':'▶ 시작'}
+function toggleTimer(){if(T.off)return;T.run=!T.run;clearInterval(T.h);if(T.run)T.h=setInterval(()=>{if(T.left>0)T.left--;else{T.run=false;clearInterval(T.h)}paintTimer()},1000);paintTimer()}
+
+function home(){clearInterval(T.h);M=null;$('#app').innerHTML=`
+ <div class="card"><h2>미션을 고르세요</h2><p class="mute" style="margin:0 0 12px">켄텍 창의성 면접은 해마다 형식이 바뀌지만 원리는 같습니다. <b>정답 없는 상황</b>에서 자료를 읽고, 선택하고, 그 이유를 말합니다. 미션을 열 때마다 새로운 문제가 만들어집니다.</p>
+ <div class="row noprint"><button class="btn d" id="rnd">🎲 랜덤 미션</button><span class="sm mute">문제 코드로 열기</span><input type="text" id="code" placeholder="예: news-12345" style="width:170px"><button class="btn g" id="open">열기</button></div></div>
+ <div class="grid g3">${MISSIONS.map(m=>`<div class="card mcard" data-m="${m.id}"><div class="ic">${m.ic}</div><div class="yr">${m.year}</div><h3>${m.title}</h3><p>${m.desc}</p><p class="xs">준비 ${m.prep}분 · 답변 ${m.ans}분</p></div>`).join('')}</div>
+ <div class="card" style="margin-top:16px"><h3>기출 형식 한눈에 보기 <span class="mute sm">(선행학습 영향평가 보고서 2022~2026 기준)</span></h3><div class="scroll"><table>
+ <tr><th>학년도</th><th class="l">형식</th><th class="l">학생이 하는 일</th><th>준비/답변</th></tr>
+ <tr><td>2022</td><td class="l">미션 켄텍 패키지 (카드·지도·데이터)</td><td class="l">발전 설비 4종의 위치를 정하고, 세 마을에 전력을 공급하는 배치 설계</td><td>30분/25분</td></tr>
+ <tr><td>2023</td><td class="l">창의성 면접 패키지 (세 나라 지수)</td><td class="l">이웃 두 나라를 비교 분석하고 우리나라의 10년 실행 계획 수립</td><td>35분/25분</td></tr>
+ <tr><td>2024</td><td class="l">온라인 게임형 (외계 정착 시뮬레이션)</td><td class="l">정착지와 아이템을 조합해 탐험 계획 확정 → 계획에 따른 맞춤형 8문항(공통 6 + 개별 2)</td><td>35분/25분</td></tr>
+ <tr><td>2025</td><td class="l">기사 분석 (가상 신문 4부)</td><td class="l">기사 간 연관성과 시간 흐름을 추론해 발행 순서를 정하고 설명</td><td>30분/15분</td></tr>
+ <tr><td>2026</td><td class="l">평가위원 역할 (가상 기술 홍보자료 4종)</td><td class="l">평가표를 채우고 최우수 기술 하나를 추천</td><td>30분/15분</td></tr></table></div>
+ <p class="sm mute" style="margin:10px 0 0">공통 평가 요소: 발산적 사고력 · 문제해결능력 · 인문적 통찰 역량. 이 연습기의 문제 내용은 기출 형식을 본떠 새로 만든 것이며 실제 기출 문항이 아닙니다.</p></div>`;
+ $('#app').onclick=e=>{const c=e.target.closest('[data-m]');if(c)start(c.dataset.m);else if(e.target.id==='rnd')start(MISSIONS[Math.floor(Math.random()*MISSIONS.length)].id);
+  else if(e.target.id==='open'){const m=($('#code').value||'').trim().match(/^([a-z]+)-(\d+)$/);if(m&&MISSIONS.find(x=>x.id===m[1]))start(m[1],+m[2]);else $('#code').value='형식: 유형-숫자'}}}
+
+function start(id,seed){const def=MISSIONS.find(m=>m.id===id);seed=seed||Math.floor(Math.random()*90000)+10000;const r=mkR(seed*7919+id.length*104729);const d=def.gen(r);
+ M={def,seed,d,r,fu:[],shown:0,rate:{}};const app=$('#app');app.onclick=null;
+ app.innerHTML=`<div class="bar"><span class="ttl">${def.ic} ${def.title}</span><span class="code">${def.year} · 문제 코드 ${id}-${seed}</span><span class="sp"></span>
+  <div id="timer" class="timer"></div><button class="btn s" id="tbtn">▶ 시작</button><button class="btn s g" id="again">새 문제</button><button class="btn s g" id="prt">인쇄</button><button class="btn s g" id="goHome">처음으로</button></div>
+ <div class="card"><span class="tag b">준비실</span><h2 style="display:inline">문제지</h2><div style="margin-top:8px">${def.brief(d)}</div></div>
+ <div class="card" id="work"></div>
+ <div class="card"><h3>메모장 <span class="mute sm">면접실에서 설명 자료로 쓸 수 있습니다</span></h3><textarea id="memo" placeholder="생각의 흐름, 근거로 쓸 문장·수치, 발표 순서를 적어 보세요."></textarea>
+  <div class="row noprint" style="margin-top:10px"><button class="btn d" id="enter">🚪 준비 끝 · 면접실 입장</button><span class="sm mute">입장하면 답변 타이머가 준비되고 후속 질문이 만들어집니다.</span></div></div>
+ <div id="iv"></div><div id="rv"></div>`;
+ def.work(d,$('#work'));setTimer(def.prep,'준비 시간');
+ $('#tbtn').onclick=toggleTimer;$('#again').onclick=()=>start(id);$('#prt').onclick=()=>window.print();$('#goHome').onclick=home;$('#enter').onclick=interview;window.scrollTo(0,0)}
+
+function interview(){const {def,d,r}=M;let list=def.follow(d,r);
+ if(!def.fixed)list=r.shuffle(list.slice(0,2)).concat(r.sample(list.slice(2),4),r.sample(GENERIC_FU,2));
+ M.fu=list;M.shown=def.fixed?1:0;setTimer(def.ans,'답변 시간');
+ const draw=()=>{$('#iv').innerHTML=`<div class="card" style="border-color:var(--blue)"><span class="tag r">면접실</span><h2 style="display:inline">발표와 질의응답</h2>
+  <div class="hint" style="margin-top:10px">${def.summary(d)}</div>
+  ${def.fixed?'':'<p><b>먼저 준비한 답변을 발표하세요.</b> 발표가 끝나면 면접위원 역할을 맡은 사람(또는 본인)이 아래 버튼으로 후속 질문을 하나씩 뽑습니다.</p>'}
+  ${M.fu.slice(0,M.shown).map((q,i)=>`<div class="fq"><span class="n">Q${i+1}</span><span class="tag ${def.fixed?'b':'o'}">${q[0]}</span><div style="margin-top:4px;font-weight:600">${q[1]}</div><div class="xs mute">권장 답변 시간 2~4분</div></div>`).join('')}
+  <div class="row noprint">${M.shown<M.fu.length?`<button class="btn" id="nextq">${def.fixed?'다음 문항':'후속 질문 뽑기'} (${M.shown}/${M.fu.length})</button>`:'<span class="tag gn">모든 질문 완료</span>'}<button class="btn d" id="fin">면접 종료 · 돌아보기</button></div></div>`;
+  const n=$('#nextq');if(n)n.onclick=()=>{M.shown++;draw()};$('#fin').onclick=review};
+ draw();$('#iv').scrollIntoView()}
+
+function review(){clearInterval(T.h);T.run=false;paintTimer();const {def}=M;
+ const draw=()=>{const tot=Object.values(M.rate).reduce((a,b)=>a+b,0);$('#rv').innerHTML=`<div class="card"><span class="tag gn">돌아보기</span><h2 style="display:inline">스스로 평가 · 상호 평가</h2>
+  <div class="scroll" style="margin-top:10px"><table>${RUBRIC.map((g,gi)=>g[1].map((c,ci)=>`<tr>${ci===0?`<th rowspan="3" style="width:120px">${g[0]}</th>`:''}<td class="l">${c}</td><td style="width:200px"><span class="rb">${[1,2,3,4,5].map(v=>`<button data-r="${gi}-${ci}" data-v="${v}" class="${M.rate[gi+'-'+ci]===v?'on':''}">${v}</button>`).join('')}</span></td></tr>`).join('')).join('')}</table></div>
+  <p><b>합계 ${tot} / 45</b> <span class="mute sm">${RUBRIC.map((g,gi)=>g[0]+' '+[0,1,2].reduce((a,ci)=>a+(M.rate[gi+'-'+ci]||0),0)+'/15').join(' · ')}</span></p>
+  <h3>이 유형의 출제 의도</h3><ul class="rule">${def.intent.map(x=>`<li>${x}</li>`).join('')}</ul>
+  <div class="hint"><b>답변 요령</b> · ${def.tip}</div>
+  <div class="row noprint"><button class="btn" id="re1">같은 유형 새 문제</button><button class="btn g" id="re2">다른 유형 고르기</button></div></div>`;
+  $('#rv').onclick=e=>{const b=e.target.closest('[data-r]');if(b){M.rate[b.dataset.r]=+b.dataset.v;draw()}else if(e.target.id==='re1')start(def.id);else if(e.target.id==='re2')home()}};
+ draw();$('#rv').scrollIntoView()}
+
+$('#homeLink').onclick=home;
+$('#tmode').onchange=()=>{if(M)setTimer(T.label==='답변 시간'?M.def.ans:M.def.prep,T.label)};
+home();
+</script>
+</body>
+</html>
