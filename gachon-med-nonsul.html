@@ -26,7 +26,7 @@ nav a:not(.on):hover{border-color:var(--line)}
 main{padding:22px 14px 80px}
 section.view{display:none}
 section.view.on{display:block}
-.paper{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:26px 28px;margin-bottom:18px;box-shadow:0 1px 2px #0000000a}
+.paper{overflow-x:auto;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:26px 28px;margin-bottom:18px;box-shadow:0 1px 2px #0000000a}
 .sethead{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px;border-bottom:3px double var(--ink);padding-bottom:10px;margin-bottom:6px}
 .sethead h2{font-family:'Noto Serif KR',serif;margin:0;font-size:22px}
 .sethead span{font-size:13px;color:var(--sub)}
@@ -217,15 +217,15 @@ mjx-container svg{max-width:none}
 <div class="body">함수 \(f(x)=x^3+ax^2+bx+c\)가 다음 조건을 만족시킬 때, \(f(3)\)의 값을 구하는 과정을 서술하시오. (단, \(a\), \(b\), \(c\)는 상수이다.)
 <div class="box">
 <p>(가) 모든 실수 \(k\)에 대하여 방정식 \(f(x)=k\)의 서로 다른 실근의 개수는 \(1\)이다.</p>
-<p>(나) 방정식 \(f'(x)=0\)은 실근을 갖는다.</p>
-<p>(다) 곡선 \(y=f(x)\) 위의 점 \((0,f(0))\)에서의 접선의 방정식을 \(y=g(x)\)라 할 때, 이 접선이 곡선 \(y=f(x)\)와 다시 만나는 점의 \(x\)좌표는 \(6\)이고 \(g(f'(1))=30\)이다.</p>
+<p>(나) 방정식 \(f'(x)=0\)은 실근을 갖고, \(f'(-1)&gt;f'(1)\)이다.</p>
+<p>(다) 곡선 \(y=f(x)\) 위의 점 \((0,f(0))\)에서의 접선의 방정식을 \(y=g(x)\)라 할 때, 곡선 \(y=f(x)\)와 직선 \(y=g(x)\)로 둘러싸인 부분의 넓이는 \(108\)이고 \(g(f'(1))=30\)이다.</p>
 </div></div>
 <details><summary>정답 및 해설</summary><div class="sol">
 <span class="ans">f(3) = 3</span>
-<p>(가)에서 \(f\)는 극값을 갖지 않으므로 모든 \(x\)에서 \(f'(x)\ge0\). (나)와 함께 \(f'(x)=3(x-p)^2\) 꼴이고 \(f(x)=(x-p)^3+q\).</p>
-<p>\(f(x)-g(x)\)는 최고차항 계수 1인 삼차식으로 \(x=0\)을 중근으로 가지며, \(x^2\)의 계수가 \(-3p\)이므로 \(f(x)-g(x)=x^2(x-3p)\). 다시 만나는 점에서 \(3p=6\), \(p=2\).</p>
-<p>\(f'(1)=3\), \(g(x)=f'(0)x+f(0)=12x+q-8\)이므로 \(g(3)=28+q=30\), \(q=2\).</p>
-<p>\(f(x)=(x-2)^3+2\), \(f(3)=3\).</p>
+<p>(가)에서 \(f\)는 극값을 갖지 않으므로 모든 \(x\)에서 \(f'(x)\ge0\). (나)와 함께 \(f'(x)=3(x-p)^2\), \(f(x)=(x-p)^3+q\).</p>
+<p>\(f(x)-g(x)\)는 \(x=0\)을 중근으로 갖고 \(x^2\)의 계수가 \(-3p\)이므로 \(f(x)-g(x)=x^2(x-3p)\). 넓이는 \(\dfrac{(3p)^4}{12}=108\)에서 \(p^4=16\), \(p=\pm2\).</p>
+<p>\(f'(-1)=3(1+p)^2&gt;f'(1)=3(1-p)^2\)에서 \(p&gt;0\)이므로 \(p=2\).</p>
+<p>\(f'(1)=3\), \(g(x)=f'(0)x+f(0)=12x+q-8\)이므로 \(g(3)=28+q=30\), \(q=2\). \(f(x)=(x-2)^3+2\), \(f(3)=3\).</p>
 </div></details></div>
 </div>
 </section>
@@ -387,21 +387,21 @@ mjx-container svg{max-width:none}
 <p>\(c_n=\dfrac\pi2-a_n\)이라 하면 \(n\ge2\)에서 \(0&lt;c_n&lt;\dfrac\pi2\), \(\tan c_n=\dfrac1{n-1}\to0\)이므로 \(c_n\to0\), 즉 \(a_n\to\dfrac\pi2\). 따라서 \(\displaystyle\lim S_n=\frac\pi2+\frac\pi2-\frac\pi4=\frac{3\pi}4\).</p>
 </div></details></div>
 
-<div class="q"><div class="qh"><span class="qn">[문제 3]</span><span class="tag">수학Ⅱ · 접선과 넓이</span><span class="pt">20점</span></div>
-<div class="body">두 상수 \(a\), \(b\)에 대하여 함수 \(f(x)=x^3+ax^2+bx\)가 다음 조건을 만족시킨다.
+<div class="q"><div class="qh"><span class="qn">[문제 3]</span><span class="tag">수학Ⅱ · 사차함수의 개형과 정적분</span><span class="pt">20점</span></div>
+<div class="body">최고차항의 계수가 \(1\)인 사차함수 \(f(x)\)와 \(1\)보다 큰 실수 \(p\)가 다음 조건을 만족시킨다.
 <div class="box">
-<p>(가) 곡선 \(y=f(x)\) 위의 원점에서의 접선 \(l\)은 곡선 \(y=f(x)\)와 원점이 아닌 점 \(\mathrm P\)에서 만나고, 점 \(\mathrm P\)의 \(x\)좌표는 양수이다.</p>
-<p>(나) 곡선 \(y=f(x)\)와 직선 \(l\)로 둘러싸인 부분의 넓이는 \(\dfrac{27}4\)이다.</p>
-<p>(다) 곡선 \(y=f(x)\) 위의 점 \(\mathrm P\)에서의 접선 \(m\)의 기울기는 직선 \(l\)의 기울기의 \(4\)배이다.</p>
+<p>(가) 방정식 \(f'(x)=0\)의 서로 다른 실근은 \(1\)과 \(p\)뿐이다.</p>
+<p>(나) \(f(0)=f(p)\)</p>
+<p>(다) \(f(1)=-20\)</p>
 </div>
-\(f(2)\)의 값과 곡선 \(y=f(x)\)와 직선 \(m\)으로 둘러싸인 부분의 넓이를 구하는 과정을 서술하시오.</div>
+\(f(5)\)의 값과 곡선 \(y=f(x)\)와 직선 \(y=f(p)\)로 둘러싸인 부분의 넓이를 구하는 과정을 서술하시오.</div>
 <details><summary>정답 및 해설</summary><div class="sol">
-<span class="ans">f(2) = 2, 넓이 108</span>
-<p>\(l:y=bx\)이고 \(f(x)-bx=x^2(x+a)\)이므로 점 \(\mathrm P\)의 \(x\)좌표는 \(-a&gt;0\).</p>
-<p>(나): \(\displaystyle\int_0^{-a}\left|x^2(x+a)\right|dx=\frac{a^4}{12}=\frac{27}4\)에서 \(a^4=81\), \(a=-3\).</p>
-<p>(다): \(f'(3)=27-18+b=9+b=4b\)에서 \(b=3\). \(f(x)=x^3-3x^2+3x\), \(f(2)=2\).</p>
-<p>접선 \(m\)은 \(x=3\)에서 접하므로 \(f(x)-m(x)=(x-3)^2(x-s)\)이고 \(x^2\)의 계수에서 \(6+s=3\), \(s=-3\).</p>
-<p>넓이 \(=\displaystyle\int_{-3}^{3}(x-3)^2(x+3)dx=\frac{6^4}{12}=108\).</p>
+<span class="ans">\(f(5)=12\), 넓이 \(\dfrac{256}{5}\) (p = 4)</span>
+<p>(가)에서 \(f'(x)=4(x-1)^2(x-p)\) 또는 \(f'(x)=4(x-1)(x-p)^2\)이다.</p>
+<p>(i) \(f'(x)=4(x-1)^2(x-p)\): \(f(x)-f(1)\)은 \((x-1)^3\)을 인수로 가지므로 \(f(x)-f(1)=(x-1)^3(x-r)\)로 놓고 미분하면 \((x-1)^2(4x-3r-1)\), 따라서 \(r=\dfrac{4p-1}3\). (나)에서 \(f(0)-f(1)=r\), \(f(p)-f(1)=(p-1)^3(p-r)=-\dfrac{(p-1)^4}3\)이므로 \((p-1)^4+4p-1=0\). \(p&gt;1\)이면 좌변이 양수이므로 불가능하다.</p>
+<p>(ii) \(f'(x)=4(x-1)(x-p)^2\): \(f(x)-f(p)=(x-p)^3(x-r)\)로 놓고 미분하면 \((x-p)^2(4x-3r-p)\), 따라서 \(3r+p=4\). (나)에서 \(f(0)-f(p)=p^3r=0\)이므로 \(r=0\), \(p=4\).</p>
+<p>따라서 \(f(x)=x(x-4)^3+f(4)\). (다)에서 \(f(1)=-27+f(4)=-20\), \(f(4)=7\). \(f(x)=x(x-4)^3+7\), \(f(5)=12\).</p>
+<p>곡선과 직선 \(y=7\)은 \(x=0\), \(x=4\)에서 만나고 \(0&lt;x&lt;4\)에서 \(f(x)&lt;7\)이므로 넓이는 \(\displaystyle\int_0^4x(4-x)^3dx=\int_0^4(4-u)u^3du=256-\frac{1024}5=\frac{256}5\).</p>
 </div></details></div>
 
 <div class="q"><div class="qh"><span class="qn">[문제 4]</span><span class="tag">미적분 · 치환적분과 급수</span><span class="pt">20점</span></div>
@@ -440,16 +440,17 @@ mjx-container svg{max-width:none}
 <p>\(h(k)=2\)인 \(k\)도 이 세 값이다. 0이 아닌 접점은 \(k=0\)일 때 \(s=1\), \(k=3\pm2\sqrt2\)일 때 중근 \(s=\dfrac{k+1}2=2\pm\sqrt2\). 곱은 \(1\cdot(2-\sqrt2)(2+\sqrt2)=2\).</p>
 </div></details></div>
 
-<div class="q"><div class="qh"><span class="qn">[문제 7]</span><span class="tag">수학Ⅰ·미적분 · 점화식과 급수</span><span class="pt">20점</span></div>
-<div class="body">수열 \(\{a_n\}\)이 \(a_1=2\)이고 모든 자연수 \(n\)에 대하여
-\[a_{n+1}=a_n^{\,2}-a_n+1\]
-을 만족시킨다. \(S_n=\displaystyle\sum_{k=1}^{n}\frac1{a_k}\)라 할 때, \(S_4\)의 값과 \(\displaystyle\lim_{n\to\infty}S_n\)의 값을 구하는 과정을 서술하시오.</div>
+<div class="q"><div class="qh"><span class="qn">[문제 7]</span><span class="tag">수학Ⅰ · 수열의 합과 일반항</span><span class="pt">20점</span></div>
+<div class="body">첫째항이 \(1\)인 수열 \(\{a_n\}\)의 첫째항부터 제\(n\)항까지의 합을 \(S_n\)이라 하자. \(2\) 이상의 모든 자연수 \(n\)에 대하여
+\[2S_n^{\,2}=a_n\left(2S_n-1\right)\]
+이 성립할 때, \(a_{10}\)의 값과 \(\displaystyle\sum_{k=1}^{m}S_kS_{k+1}=\frac{20}{41}\)을 만족시키는 자연수 \(m\)의 값을 구하는 과정을 서술하시오.</div>
 <details><summary>정답 및 해설</summary><div class="sol">
-<span class="ans">\(S_4=\dfrac{1805}{1806},\ \displaystyle\lim_{n\to\infty}S_n=1\)</span>
-<p>\(a_{n+1}-1=a_n(a_n-1)\)이고 \(a_n&gt;1\)이므로 \(\dfrac1{a_{n+1}-1}=\dfrac1{a_n-1}-\dfrac1{a_n}\), 즉 \(\dfrac1{a_n}=\dfrac1{a_n-1}-\dfrac1{a_{n+1}-1}\).</p>
-<p>따라서 \(S_n=\dfrac1{a_1-1}-\dfrac1{a_{n+1}-1}=1-\dfrac1{a_{n+1}-1}\).</p>
-<p>\(a_2=3,\ a_3=7,\ a_4=43,\ a_5=1807\)이므로 \(S_4=1-\dfrac1{1806}=\dfrac{1805}{1806}\).</p>
-<p>\(a_{n+1}-a_n=(a_n-1)^2\ge1\)이므로 \(a_n\ge n+1\), \(a_n\to\infty\). 따라서 \(\displaystyle\lim S_n=1\).</p>
+<span class="ans">\(a_{10}=-\dfrac{2}{323},\ m=20\)</span>
+<p>\(n\ge2\)일 때 \(a_n=S_n-S_{n-1}\)을 대입하면 \(2S_n^2=2S_n^2-S_n-2S_nS_{n-1}+S_{n-1}\), 즉 \(S_{n-1}-S_n=2S_nS_{n-1}\).</p>
+<p>어떤 \(n\ge2\)에서 \(S_n=0\)이면 위 식에서 \(S_{n-1}=0\)이고, 이를 반복하면 \(S_1=0\)이 되어 \(S_1=1\)에 모순이다. 따라서 모든 \(n\)에서 \(S_n\ne0\)이고 양변을 \(S_nS_{n-1}\)로 나누면 \(\dfrac1{S_n}-\dfrac1{S_{n-1}}=2\).</p>
+<p>\(\left\{\dfrac1{S_n}\right\}\)은 첫째항 1, 공차 2인 등차수열이므로 \(S_n=\dfrac1{2n-1}\).</p>
+<p>\(a_{10}=S_{10}-S_9=\dfrac1{19}-\dfrac1{17}=-\dfrac2{323}\).</p>
+<p>\(\displaystyle\sum_{k=1}^mS_kS_{k+1}=\sum_{k=1}^m\frac1{(2k-1)(2k+1)}=\frac12\left(1-\frac1{2m+1}\right)=\frac m{2m+1}=\frac{20}{41}\)에서 \(m=20\).</p>
 </div></details></div>
 
 <div class="q"><div class="qh"><span class="qn">[문제 8]</span><span class="tag">미적분 · 역함수와 정적분</span><span class="pt">15점</span></div>
@@ -487,7 +488,7 @@ mjx-container svg{max-width:none}
 <p>\(\ln(n^2+k^2)=2\ln n+\ln\left(1+\dfrac{k^2}{n^2}\right)\), \(\dfrac4{n^4}\displaystyle\sum k^3=\left(1+\frac1n\right)^2\)이므로 \(\ln n\)항이 소거되어
 \[(\text{주어진 식})=-4\cdot\frac1n\sum_{k=1}^n\left(\frac kn\right)^3\ln\left(1+\frac{k^2}{n^2}\right)\to-4\int_0^1x^3\ln(1+x^2)dx.\]</p>
 <p>\(u=x^2\)으로 치환하면 \(4\displaystyle\int_0^1x^3\ln(1+x^2)dx=2\int_0^1u\ln(1+u)du\).</p>
-<p>\(\displaystyle2\int_0^1u\ln(1+u)du=\Big[u^2\ln(1+u)\Big]_0^1-\int_0^1\frac{u^2}{1+u}du=\ln2-\int_0^1\left(u-1+\frac1{1+u}\right)du=\ln2-\left(-\frac12+\ln2\right)=\frac12\).</p>
+<p>부분적분하면 \[2\int_0^1u\ln(1+u)du=\Big[u^2\ln(1+u)\Big]_0^1-\int_0^1\frac{u^2}{1+u}du=\ln2-\int_0^1\left(u-1+\frac1{1+u}\right)du\] 이고 \(\displaystyle\int_0^1\left(u-1+\frac1{1+u}\right)du=-\frac12+\ln2\)이므로 값은 \(\dfrac12\)이다.</p>
 <p>따라서 극한값은 \(-\dfrac12\).</p>
 </div></details></div>
 
@@ -504,50 +505,57 @@ mjx-container svg{max-width:none}
 <p>\(\displaystyle\int_{-4}^{-2}(2-t^3+3t)dt=46\), \(\displaystyle\int_{-2}^{-1}4\,dt=4\), \(\displaystyle\int_{-1}^{1}\{f(t+3)+2\}dt=\int_2^4(u^3-3u)du+4=42+4=46\). 합은 \(96\).</p>
 </div></details></div>
 
-<div class="q"><div class="qh"><span class="qn">[문제 4]</span><span class="tag">미적분 · 음함수의 미분과 부분적분</span><span class="pt">20점</span></div>
+<div class="q"><div class="qh"><span class="qn">[문제 4]</span><span class="tag">미적분 · 음함수의 미분과 치환·부분적분</span><span class="pt">20점</span></div>
 <div class="body">실수 전체의 집합에서 미분가능한 함수 \(f(x)\)가 모든 실수 \(x\)에 대하여
 \[-\frac\pi2&lt;f(x)&lt;\frac\pi2,\qquad \tan f(x)=x\]
-를 만족시킨다. \(\displaystyle\int_0^{1}f(x)\,dx\)의 값과 \(\displaystyle\int_0^{\sqrt3}xf(x)\,dx\)의 값을 구하는 과정을 서술하시오.</div>
+를 만족시킨다. \(\displaystyle\int_0^{\sqrt3}xf(x)\,dx\)의 값과 \(\displaystyle\int_0^{1}\frac{f(x)}{1+x}\,dx\)의 값을 구하는 과정을 서술하시오.</div>
 <details><summary>정답 및 해설</summary><div class="sol">
-<span class="ans">\(\displaystyle\int_0^1f(x)dx=\frac\pi4-\frac12\ln2,\ \int_0^{\sqrt3}xf(x)dx=\frac{2\pi}3-\frac{\sqrt3}2\)</span>
-<p>양변을 미분하면 \(\sec^2f(x)\cdot f'(x)=1\)이고 \(\sec^2f(x)=1+\tan^2f(x)=1+x^2\)이므로 \(f'(x)=\dfrac1{1+x^2}\). 또 \(f(0)=0\), \(f(1)=\dfrac\pi4\), \(f(\sqrt3)=\dfrac\pi3\).</p>
-<p>\(\displaystyle\int_0^1f(x)dx=\Big[xf(x)\Big]_0^1-\int_0^1\frac{x}{1+x^2}dx=\frac\pi4-\frac12\ln2\).</p>
-<p>\(\displaystyle\int_0^{\sqrt3}xf(x)dx=\left[\frac{x^2}2f(x)\right]_0^{\sqrt3}-\frac12\int_0^{\sqrt3}\frac{x^2}{1+x^2}dx\)이고 \(\dfrac{x^2}{1+x^2}=1-f'(x)\)이므로
-\(\displaystyle\int_0^{\sqrt3}\frac{x^2}{1+x^2}dx=\sqrt3-f(\sqrt3)=\sqrt3-\frac\pi3\).</p>
-<p>따라서 \(\dfrac32\cdot\dfrac\pi3-\dfrac12\left(\sqrt3-\dfrac\pi3\right)=\dfrac{2\pi}3-\dfrac{\sqrt3}2\).</p>
+<span class="ans">\(\displaystyle\int_0^{\sqrt3}xf(x)dx=\frac{2\pi}3-\frac{\sqrt3}2,\ \int_0^1\frac{f(x)}{1+x}dx=\frac\pi8\ln2\)</span>
+<p>양변을 미분하면 \(\sec^2f(x)\cdot f'(x)=1\)이고 \(\sec^2f(x)=1+x^2\)이므로 \(f'(x)=\dfrac1{1+x^2}\). 또 \(f(0)=0\), \(f(1)=\dfrac\pi4\), \(f(\sqrt3)=\dfrac\pi3\).</p>
+<p>\(\displaystyle\int_0^{\sqrt3}xf(x)dx=\left[\frac{x^2}2f(x)\right]_0^{\sqrt3}-\frac12\int_0^{\sqrt3}\frac{x^2}{1+x^2}dx\)이고 \(\dfrac{x^2}{1+x^2}=1-f'(x)\)이므로 \(\displaystyle\int_0^{\sqrt3}\frac{x^2}{1+x^2}dx=\sqrt3-\frac\pi3\). 따라서 값은 \(\dfrac\pi2-\dfrac12\left(\sqrt3-\dfrac\pi3\right)=\dfrac{2\pi}3-\dfrac{\sqrt3}2\).</p>
+<p>둘째 적분은 부분적분하면 \(\displaystyle\int_0^1\frac{f(x)}{1+x}dx=\Big[f(x)\ln(1+x)\Big]_0^1-\int_0^1\frac{\ln(1+x)}{1+x^2}dx=\frac\pi4\ln2-I\).</p>
+<p>\(I=\displaystyle\int_0^1\ln(1+x)f'(x)dx\)에서 \(u=f(x)\) (\(x=\tan u\))로 치환하면 \(I=\displaystyle\int_0^{\pi/4}\ln(1+\tan u)\,du\).</p>
+<p>\(u=\dfrac\pi4-v\)로 치환하면 \(1+\tan\left(\dfrac\pi4-v\right)=1+\dfrac{1-\tan v}{1+\tan v}=\dfrac2{1+\tan v}\)이므로 \(I=\displaystyle\int_0^{\pi/4}\{\ln2-\ln(1+\tan v)\}dv=\frac\pi4\ln2-I\), 즉 \(I=\dfrac\pi8\ln2\).</p>
+<p>따라서 \(\displaystyle\int_0^1\frac{f(x)}{1+x}dx=\frac\pi4\ln2-\frac\pi8\ln2=\frac\pi8\ln2\).</p>
 </div></details></div>
 
 <div class="q"><div class="qh"><span class="qn">[문제 5]</span><span class="tag">수학Ⅰ · 수열의 합</span><span class="pt">20점</span></div>
 <div class="body">첫째항이 \(0\)인 수열 \(\{a_n\}\)이 모든 자연수 \(n\)에 대하여
-\[a_{n+1}=\sum_{k=1}^{n}k\times2^{\,n-k}\]
-이다. \(\displaystyle\sum_{k=1}^{m}a_k=968\)일 때, 자연수 \(m\)의 값을 구하는 과정을 서술하시오.</div>
+\[a_{n+1}=\sum_{k=1}^{n}k^2\times2^{\,n-k}\]
+이다. \(\displaystyle\sum_{k=1}^{m}a_k=1230\)일 때, 자연수 \(m\)의 값을 구하는 과정을 서술하시오.</div>
 <details><summary>정답 및 해설</summary><div class="sol">
-<span class="ans">m = 9</span>
-<p>\(a_{n+2}=\displaystyle\sum_{k=1}^{n+1}k\cdot2^{n+1-k}=2\sum_{k=1}^{n}k\cdot2^{n-k}+(n+1)=2a_{n+1}+n+1\). \(a_2=1=2a_1+1\)이므로 모든 자연수 \(n\)에 대하여 \(a_{n+1}=2a_n+n\).</p>
-<p>\(a_{n+1}+(n+1)+1=2(a_n+n+1)\)이므로 \(\{a_n+n+1\}\)은 첫째항 2, 공비 2인 등비수열이고 \(a_n=2^n-n-1\).</p>
-<p>\(\displaystyle\sum_{k=1}^ma_k=2^{m+1}-2-\frac{m(m+1)}2-m\). \(m=9\)일 때 \(1024-2-45-9=968\). \(m\ge2\)에서 \(a_m&gt;0\)이라 합은 증가하므로 \(m=9\).</p>
+<span class="ans">m = 8</span>
+<p>\(a_{n+2}=\displaystyle\sum_{k=1}^{n+1}k^2\cdot2^{n+1-k}=2\sum_{k=1}^nk^2\cdot2^{n-k}+(n+1)^2=2a_{n+1}+(n+1)^2\). \(a_2=1=2a_1+1^2\)이므로 모든 자연수 \(n\)에 대하여 \(a_{n+1}=2a_n+n^2\).</p>
+<p>\(a_{n+1}+\alpha(n+1)^2+\beta(n+1)+\gamma=2(a_n+\alpha n^2+\beta n+\gamma)\)가 되도록 계수를 비교하면 \(\alpha=1\), \(\beta=2\), \(\gamma=3\).</p>
+<p>따라서 \(\{a_n+n^2+2n+3\}\)은 첫째항 6, 공비 2인 등비수열이고 \(a_n=3\cdot2^n-n^2-2n-3\).</p>
+<p>\(\displaystyle\sum_{k=1}^ma_k=3(2^{m+1}-2)-\frac{m(m+1)(2m+1)}6-m(m+1)-3m\). \(m=8\)일 때 \(1530-204-72-24=1230\). \(n\ge2\)에서 \(a_n&gt;0\)이라 합은 증가하므로 \(m=8\).</p>
 </div></details></div>
 
-<div class="q"><div class="qh"><span class="qn">[문제 6]</span><span class="tag">미적분 · 실근의 개수와 연속</span><span class="pt">20점</span></div>
-<div class="body">\(x&gt;0\)에서 정의된 함수 \(f(x)=\dfrac{(\ln x)^2}{x}\)과 실수 \(t\)에 대하여 방정식 \(f(x)=t\)의 서로 다른 실근의 개수를 \(g(t)\)라 하자. 최고차항의 계수가 \(1\)인 이차함수 \(p(t)\)에 대하여 함수 \(g(t)p(t)\)가 실수 전체의 집합에서 연속일 때, \(p\!\left(\dfrac1{e^2}\right)\)의 값과 곡선 \(y=f(x)\)와 \(x\)축 및 직선 \(x=e^2\)으로 둘러싸인 부분의 넓이를 구하는 과정을 서술하시오. (단, \(\displaystyle\lim_{x\to\infty}\frac{(\ln x)^2}{x}=0\))</div>
+<div class="q"><div class="qh"><span class="qn">[문제 6]</span><span class="tag">미적분 · 교점의 개수와 극한</span><span class="pt">20점</span></div>
+<div class="body">\(x&gt;0\)에서 정의된 함수 \(f(x)=\dfrac{(\ln x)^2}{x}\)과 양수 \(a\)에 대하여, 함수 \(y=|f(x)-a|\)의 그래프와 직선 \(y=t\)가 만나는 서로 다른 점의 개수를 \(g(t)\)라 하자.
+\[\lim_{t\to k-}g(t)-\lim_{t\to k+}g(t)\ge5\]
+를 만족시키는 실수 \(k\)가 존재하도록 하는 \(a\)의 값을 구하고, 이때 함수 \(g(t)\)가 불연속인 모든 \(t\)에서의 함숫값의 합을 구하는 과정을 서술하시오. (단, \(\displaystyle\lim_{x\to\infty}\frac{(\ln x)^2}{x}=0\))</div>
 <details><summary>정답 및 해설</summary><div class="sol">
-<span class="ans">\(p\!\left(\dfrac1{e^2}\right)=-\dfrac3{e^4}\), 넓이 \(\dfrac83\)</span>
-<p>\(f'(x)=\dfrac{\ln x(2-\ln x)}{x^2}\)이므로 \(x=1\)에서 극솟값 0, \(x=e^2\)에서 극댓값 \(\dfrac4{e^2}\). \(x\to0+\)일 때 \(f\to\infty\), \(x\to\infty\)일 때 \(f\to0\).</p>
-<p>\(g(t)\): \(t&lt;0\): 0, \(t=0\): 1, \(0&lt;t&lt;\frac4{e^2}\): 3, \(t=\frac4{e^2}\): 2, \(t&gt;\frac4{e^2}\): 1. 불연속인 곳은 \(t=0\), \(t=\dfrac4{e^2}\)이다.</p>
-<p>\(g(t)p(t)\)가 \(t=0\)에서 연속이려면 \(0\cdot p(0)=3p(0)=1\cdot p(0)\)에서 \(p(0)=0\), 마찬가지로 \(p\!\left(\frac4{e^2}\right)=0\). 따라서 \(p(t)=t\left(t-\dfrac4{e^2}\right)\), \(p\!\left(\dfrac1{e^2}\right)=\dfrac1{e^2}\cdot\left(-\dfrac3{e^2}\right)=-\dfrac3{e^4}\).</p>
-<p>곡선은 \(x=1\)에서 \(x\)축에 접하므로 넓이는 \(\displaystyle\int_1^{e^2}\frac{(\ln x)^2}xdx=\left[\frac{(\ln x)^3}3\right]_1^{e^2}=\frac83\).</p>
+<span class="ans">\(a=\dfrac2{e^2}\), 함숫값의 합 6</span>
+<p>\(f'(x)=\dfrac{\ln x(2-\ln x)}{x^2}\)이므로 \(f\)는 \(x=1\)에서 극솟값 0, \(x=e^2\)에서 극댓값 \(M=\dfrac4{e^2}\)를 갖고, \(x\to0+\)일 때 \(\infty\), \(x\to\infty\)일 때 0에 가까워진다.</p>
+<p>방정식 \(f(x)=c\)의 실근의 개수를 \(n(c)\)라 하면 \(c&gt;M\): 1, \(c=M\): 2, \(0&lt;c&lt;M\): 3, \(c=0\): 1, \(c&lt;0\): 0.</p>
+<p>\(t&gt;0\)일 때 \(|f(x)-a|=t\iff f(x)=a+t\) 또는 \(f(x)=a-t\)이므로 \(g(t)=n(a+t)+n(a-t)\).</p>
+<p>\(n(a-t)\)는 \(t=a\) 직전에 3, 직후에 0이므로 \(t=a\)를 지나며 3만큼 줄어든다. \(n(a+t)\)는 \(a&lt;M\)일 때 \(t=M-a\)를 지나며 \(3\to1\)로 2만큼 줄어들고, \(a\ge M\)이면 항상 1이다. 그 밖의 곳에서는 줄어들지 않는다(\(a&gt;M\)이면 \(t=a-M\)에서 \(n(a-t)\)가 오히려 늘어난다).</p>
+<p>따라서 좌극한과 우극한의 차가 5 이상이려면 두 감소가 같은 \(t\)에서 일어나야 하므로 \(a=M-a\), \(a=\dfrac M2=\dfrac2{e^2}\)이고 이때 \(k=\dfrac2{e^2}\)에서 차는 \(6-1=5\).</p>
+<p>\(a=\dfrac2{e^2}\)일 때: \(t&lt;0\): 0, \(t=0\): \(n(a)=3\), \(0&lt;t&lt;a\): 6, \(t=a\): \(n(M)+n(0)=2+1=3\), \(t&gt;a\): 1. 불연속인 \(t=0\), \(t=a\)에서의 함숫값의 합은 \(3+3=6\).</p>
 </div></details></div>
 
-<div class="q"><div class="qh"><span class="qn">[문제 7]</span><span class="tag">수학Ⅰ·미적분 · 점화식과 삼각함수의 극한</span><span class="pt">20점</span></div>
+<div class="q"><div class="qh"><span class="qn">[문제 7]</span><span class="tag">수학Ⅰ·미적분 · 점화식과 급수</span><span class="pt">20점</span></div>
 <div class="body">두 수열 \(\{a_n\}\), \(\{b_n\}\)이 모든 자연수 \(n\)에 대하여
 \[a_1=1,\qquad a_{n+1}=\frac{\sqrt{1+a_n^{\,2}}-1}{a_n},\qquad 0&lt;b_n&lt;\frac\pi2,\quad \tan b_n=a_n\]
-을 만족시킨다. 수열 \(\{b_n\}\)의 일반항과 \(\displaystyle\lim_{n\to\infty}2^na_n\)의 값을 구하는 과정을 서술하시오.</div>
+을 만족시킨다. \(\displaystyle\lim_{n\to\infty}2^na_n\)의 값과 \(\displaystyle\sum_{n=1}^{\infty}\frac{a_n}{2^n}\)의 값을 구하는 과정을 서술하시오.</div>
 <details><summary>정답 및 해설</summary><div class="sol">
-<span class="ans">\(b_n=\dfrac{\pi}{2^{n+1}},\ \displaystyle\lim_{n\to\infty}2^na_n=\frac\pi2\)</span>
-<p>\(a_n=\tan b_n\) \(\left(0&lt;b_n&lt;\dfrac\pi2\right)\)이면 \(\sqrt{1+a_n^2}=\dfrac1{\cos b_n}\)이므로
-\[a_{n+1}=\frac{1-\cos b_n}{\sin b_n}=\frac{2\sin^2\frac{b_n}2}{2\sin\frac{b_n}2\cos\frac{b_n}2}=\tan\frac{b_n}2.\]</p>
-<p>\(0&lt;\dfrac{b_n}2&lt;\dfrac\pi2\)이고 \(\tan b_{n+1}=a_{n+1}\)이므로 \(b_{n+1}=\dfrac{b_n}2\). \(b_1=\dfrac\pi4\)에서 \(b_n=\dfrac\pi{2^{n+1}}\).</p>
-<p>\(2^na_n=2^n\tan\dfrac{\pi}{2^{n+1}}=\dfrac\pi2\cdot\dfrac{\tan\theta_n}{\theta_n}\) \(\left(\theta_n=\dfrac\pi{2^{n+1}}\to0\right)\)이고 \(\displaystyle\lim_{\theta\to0}\frac{\tan\theta}\theta=1\)이므로 극한값은 \(\dfrac\pi2\).</p>
+<span class="ans">\(\displaystyle\lim_{n\to\infty}2^na_n=\frac\pi2,\ \sum_{n=1}^\infty\frac{a_n}{2^n}=\frac2\pi\)</span>
+<p>\(a_n=\tan b_n\)이면 \(\sqrt{1+a_n^2}=\dfrac1{\cos b_n}\)이므로 \(a_{n+1}=\dfrac{1-\cos b_n}{\sin b_n}=\tan\dfrac{b_n}2\). \(0&lt;\dfrac{b_n}2&lt;\dfrac\pi2\)이므로 \(b_{n+1}=\dfrac{b_n}2\)이고 \(b_1=\dfrac\pi4\)에서 \(b_n=\dfrac\pi{2^{n+1}}\).</p>
+<p>\(2^na_n=\dfrac\pi2\cdot\dfrac{\tan b_n}{b_n}\)이고 \(b_n\to0\), \(\displaystyle\lim_{\theta\to0}\frac{\tan\theta}\theta=1\)이므로 \(\displaystyle\lim_{n\to\infty}2^na_n=\frac\pi2\).</p>
+<p>배각 공식에서 \(a_n=\tan2b_{n+1}=\dfrac{2a_{n+1}}{1-a_{n+1}^2}\)이므로 \(\dfrac2{a_n}=\dfrac1{a_{n+1}}-a_{n+1}\), 즉 \(a_{n+1}=\dfrac1{a_{n+1}}-\dfrac2{a_n}\).</p>
+<p>양변을 \(2^{n+1}\)로 나누면 \(\dfrac{a_{n+1}}{2^{n+1}}=\dfrac1{2^{n+1}a_{n+1}}-\dfrac1{2^na_n}\)이므로 \(\displaystyle\sum_{n=1}^{N}\frac{a_{n+1}}{2^{n+1}}=\frac1{2^{N+1}a_{N+1}}-\frac1{2a_1}\).</p>
+<p>\(N\to\infty\)일 때 \(\dfrac1{2^{N+1}a_{N+1}}\to\dfrac2\pi\)이므로 \(\displaystyle\sum_{n=1}^\infty\frac{a_n}{2^n}=\frac{a_1}2+\frac2\pi-\frac12=\frac2\pi\).</p>
 </div></details></div>
 
 <div class="q"><div class="qh"><span class="qn">[문제 8]</span><span class="tag">미적분 · 입체도형의 부피</span><span class="pt">15점</span></div>
@@ -584,16 +592,16 @@ mjx-container svg{max-width:none}
 <h3>제3회</h3>
 <table class="akey">
 <tr><td>1</td><td>\(m=20\)</td></tr><tr><td>2</td><td>\(-\dfrac92,\ \dfrac{3\pi}4\)</td></tr>
-<tr><td>3</td><td>\(f(2)=2\), 넓이 108</td></tr><tr><td>4</td><td>\(\dfrac12\)</td></tr>
+<tr><td>3</td><td>\(f(5)=12\), 넓이 \(\dfrac{256}5\)</td></tr><tr><td>4</td><td>\(\dfrac12\)</td></tr>
 <tr><td>5</td><td>\(m=113,\ \dfrac{223}{11}\)</td></tr><tr><td>6</td><td>합 6, 곱 2</td></tr>
-<tr><td>7</td><td>\(\dfrac{1805}{1806},\ 1\)</td></tr><tr><td>8</td><td>\(\dfrac32,\ e-\dfrac53\)</td></tr>
+<tr><td>7</td><td>\(a_{10}=-\dfrac2{323},\ m=20\)</td></tr><tr><td>8</td><td>\(\dfrac32,\ e-\dfrac53\)</td></tr>
 </table>
 <h3>제4회</h3>
 <table class="akey">
 <tr><td>1</td><td>\(5,\ 7,\ \dfrac{55\sqrt3}4\)</td></tr><tr><td>2</td><td>\(-\dfrac12\)</td></tr>
-<tr><td>3</td><td>\(t=-2,-1\), 정적분 96</td></tr><tr><td>4</td><td>\(\dfrac\pi4-\dfrac12\ln2,\ \dfrac{2\pi}3-\dfrac{\sqrt3}2\)</td></tr>
-<tr><td>5</td><td>\(m=9\)</td></tr><tr><td>6</td><td>\(-\dfrac3{e^4},\ \dfrac83\)</td></tr>
-<tr><td>7</td><td>\(b_n=\dfrac\pi{2^{n+1}},\ \dfrac\pi2\)</td></tr><tr><td>8</td><td>\(\dfrac{\sqrt3}2(\sqrt e-1)\)</td></tr>
+<tr><td>3</td><td>\(t=-2,-1\), 정적분 96</td></tr><tr><td>4</td><td>\(\dfrac{2\pi}3-\dfrac{\sqrt3}2,\ \dfrac\pi8\ln2\)</td></tr>
+<tr><td>5</td><td>\(m=8\)</td></tr><tr><td>6</td><td>\(a=\dfrac2{e^2}\), 합 6</td></tr>
+<tr><td>7</td><td>\(\dfrac\pi2,\ \dfrac2\pi\)</td></tr><tr><td>8</td><td>\(\dfrac{\sqrt3}2(\sqrt e-1)\)</td></tr>
 </table>
 </div>
 </section>
