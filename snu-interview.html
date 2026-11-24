@@ -10,6 +10,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#f3f5f8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#10151d" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACOklEQVR42u3cwXECMRBFwVkVd5wQBIbPTswROQQCgBtVnj+rfhGA3JYWMfZxvT1KeteyBIJDcAgOwSE4BIfgEByCQ3BIcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ3AIDsEhwSE4BIfgEByCQ5ldEl7E3++Pn8RrX/fv3hdwNP6rSSbClfTgwGIEkUXGlP5/3RYZfETgIGPWGi4y+GjGQcbE9Vxk8NGGg4y5a+v6XE04bBujNw87h+BQFA5nyvSTxc4hOASH4BAcqu1nSCtygtIwwwWLnLecRsSxojk4Ntw2Yt+7nUNw6AQ4dv5GxgOpyj3Hp79A7jngcL545hAcgkNwCA4JDsEhOFQmwcoNKRwmwXzxJs8ctg2TYLJzCA7P7d67nUMmwewZJsHkWBEcgkNwCA7BITgkOFQmwcrtnEmwfae2HCsyCVamtuAQHIJjr88CHkhV7jlMgtkzTILJsaJ0HDv/7Vqd4sbFziE4lIbDyTL6Ft/OoT4cNo+5a7t8gUlG87HCx8T1XAYgyIh4IOVj1houA1RkBH2U5WPKuh3X26N874pFGg5KwrfYCBy9jBxzrs/JgIMMOMiAgww4yICDDDjIgIMMOMiAgwzth4MMOMiAgww4yICDDDjIgIMMOMiAgww4yNCZcZABBxlwkAEHGXCQAQcZcJCxVcP+VlZ2DsEhOASH4BAcEhyCQ3AIDsEhOASH4BAcgkNwSHAIDsEhOASH4BAcgkNwCA4JDsEhOASH4FBGT4QSoL5yKo8eAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACOklEQVR42u3cwXECMRBFwVkVd5wQBIbPTswROQQCgBtVnj+rfhGA3JYWMfZxvT1KeteyBIJDcAgOwSE4BIfgEByCQ3BIcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ3AIDsEhwSE4BIfgEByCQ5ldEl7E3++Pn8RrX/fv3hdwNP6rSSbClfTgwGIEkUXGlP5/3RYZfETgIGPWGi4y+GjGQcbE9Vxk8NGGg4y5a+v6XE04bBujNw87h+BQFA5nyvSTxc4hOASH4BAcqu1nSCtygtIwwwWLnLecRsSxojk4Ntw2Yt+7nUNw6AQ4dv5GxgOpyj3Hp79A7jngcL545hAcgkNwCA4JDsEhOFQmwcoNKRwmwXzxJs8ctg2TYLJzCA7P7d67nUMmwewZJsHkWBEcgkNwCA7BITgkOFQmwcrtnEmwfae2HCsyCVamtuAQHIJjr88CHkhV7jlMgtkzTILJsaJ0HDv/7Vqd4sbFziE4lIbDyTL6Ft/OoT4cNo+5a7t8gUlG87HCx8T1XAYgyIh4IOVj1houA1RkBH2U5WPKuh3X26N874pFGg5KwrfYCBy9jBxzrs/JgIMMOMiAgww4yICDDDjIgIMMOMiAgwzth4MMOMiAgww4yICDDDjIgIMMOMiAgww4yNCZcZABBxlwkAEHGXCQAQcZcJCxVcP+VlZ2DsEhOASH4BAcEhyCQ3AIDsEhOASH4BAcgkNwSHAIDsEhOASH4BAcgkNwCA4JDsEhOASH4FBGT4QSoL5yKo8eAAAAAElFTkSuQmCC">
 <title>서울대 제시문 면접 생성기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +21,8 @@
   /* 배치: 왼쪽에 선택 패널(모집단위→유형→영역), 오른쪽에 문항지. 좁은 화면에서는 한 줄로 쌓는다. */
   --bg:#f3f5f8; --paper:#ffffff; --ink:#18212f; --sub:#5b6676; --line:#d5dbe4;
   --accent:#0f3d7a; --accent-soft:#e3ecf8; --mark:#b5471b; --mark-soft:#fbeee6;
-  --display:"Noto Serif KR","Pretendard Variable",Pretendard,serif;
-  --body:"Pretendard Variable",Pretendard,"Noto Sans KR",system-ui,-apple-system,"Malgun Gothic",sans-serif;
+  --display:"Noto Serif KR","Pretendard Variable",Pretendard,AppleMyungjo,serif;
+  --body:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",system-ui,"Malgun Gothic",sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#10151d; --paper:#18202b; --ink:#e6ebf2; --sub:#9aa6b6; --line:#2f3a49;
@@ -147,6 +149,25 @@ footer{padding-bottom:max(28px,env(safe-area-inset-bottom))}
   ol.qs>li{grid-template-columns:minmax(0,1fr);gap:4px 0}
 }
 @media print{.hs,.katex.wide{overflow:visible}}
+/* ── 맥·아이패드·아이폰 추가 대응 ── */
+math{font-family:"STIX Two Math","Cambria Math","Latin Modern Math",math}
+.bar{position:sticky;top:0;z-index:5;background:var(--paper)}
+.sum{display:none}
+@media (min-width:861px){.panel{position:sticky;top:12px;max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);overflow-y:auto}}
+@media (max-width:860px){
+  .sum{display:flex;gap:10px;align-items:center;justify-content:space-between;width:100%;border:none;background:none;padding:0;text-align:left;font-weight:700;font-size:.95rem;color:var(--ink)}
+  .sum small{font-weight:500;color:var(--accent);white-space:nowrap}
+  .panel.fold>.step,.panel.fold>.info,.panel.fold>.goSheet{display:none!important}
+  .goSheet{display:block;width:100%;padding:11px;border:none;border-radius:8px;background:var(--accent);color:var(--paper);font-weight:700}
+  .bar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:flex-start;padding-top:max(10px,env(safe-area-inset-top))}
+  .bar::-webkit-scrollbar{display:none}
+  .bar .timer{flex-wrap:nowrap;flex:none}.bar .btn{white-space:nowrap}
+  .sheet{scroll-margin-top:8px}
+}
+@media (min-width:861px){.goSheet{display:none}}
+@media (display-mode:standalone){header{padding-top:max(14px,env(safe-area-inset-top))}}
+@media print{.bar{position:static}.sum,.goSheet{display:none!important}.panel{position:static;max-height:none}}
+
 </style>
 </head>
 <body>
@@ -155,14 +176,16 @@ footer{padding-bottom:max(28px,env(safe-area-inset-bottom))}
   <p>2027학년도 수시모집 일반전형 면접 및 구술고사 기준 · 2015 개정 교육과정 범위</p>
 </header>
 <main>
-  <section class="panel" aria-label="면접 선택">
+  <section class="panel" id="panel" aria-label="면접 선택">
+    <button class="sum" id="sum" type="button" aria-expanded="true"><span id="sumT"></span><small id="sumB">접기</small></button>
     <div class="step"><label for="col">1. 단과대학</label><select id="col"></select></div>
     <div class="step"><label for="dept">2. 모집단위</label><select id="dept"></select></div>
     <div class="step" id="typeStep"><span class="lab">3. 면접 유형</span><div class="chips" id="types"></div></div>
     <div class="step"><span class="lab" id="areaLab">4. 제시문 영역</span><div class="chips" id="areas"></div></div>
     <div class="info" id="info"></div>
+    <button class="goSheet" id="goSheet" type="button">문항 보기</button>
   </section>
-  <section class="sheet" aria-label="문항지">
+  <section class="sheet" id="sheet" aria-label="문항지">
     <div class="tabs" id="tabs" role="tablist"></div>
     <div class="bar">
       <div class="timer">
@@ -223,12 +246,12 @@ function render(){
   base.forEach((s,i)=>{n[s.kind]++;const b=document.createElement('button');b.type='button';b.className='tab';b.setAttribute('role','tab');b.setAttribute('aria-selected',i===S.set);b.innerHTML='<span class="k">'+s.kind+(shown.length>1?' 세트':'')+'</span>'+n[s.kind];b.onclick=()=>{S.set=i;render()};tabs.appendChild(b)});
   const v=$('view');
   if(!base.length){tabs.innerHTML='<span class="tab" aria-selected="true">'+shown.map(a=>DATA.areas[a].name).join(' + ')+'</span>';
-    v.innerHTML='<div class="empty"><b>문항 준비 중입니다.</b></div>';return}
+    v.innerHTML='<div class="empty"><b>문항 준비 중입니다.</b></div>';after();return}
   v.innerHTML=shown.map((a,k)=>{const ar=DATA.areas[a],s=lists[k][S.set];
     return (shown.length>1?'<h3 class="areaH">제시문 '+(k+1)+' · '+ar.name+'</h3>':'')
       +(ar.partial&&shown.length===1?'<p class="note" style="margin-top:14px">'+ar.partial+'</p>':'')
       +(s?art(s,ar):'<div class="empty">이 영역의 해당 세트는 준비 중입니다.</div>')}).join('');
-  fit(v);fitMath();
+  fit(v);fitMath();after();
 }
 function art(s,ar){return '<article class="doc"><p class="meta">'+ar.name+' · '+s.kind+(s.kind==='기출'?' · '+s.src+' ('+s.page+')':'')+'<span class="tonly"> · '+s.scope+'</span></p>'
    +'<h2>※ 제시문을 읽고 문제에 답하시오.</h2>'+s.body
@@ -252,12 +275,28 @@ $('reset').onclick=resetClock;
 $('go').onclick=()=>{if(S.run){sync();stop()}else{if(!S.left)return;S.run=true;endAt=Date.now()+S.left*1000;tick=setInterval(sync,250);keepAwake(true)}show()};
 $('teacher').onclick=e=>{const on=document.body.classList.toggle('t');e.currentTarget.setAttribute('aria-pressed',on);e.currentTarget.classList.toggle('on',on)};
 if(window.self===window.top){$('print').hidden=false;$('print').onclick=()=>window.print()}
+
+/* 선택 기억 · 좁은 화면에서 선택 패널 접기 · 맥 키보드 */
+const KEY='snu-interview-v1';
+function after(){const t=type();$('sumT').textContent=S.dept+' · '+(S.area==='*'?t.areas.map(a=>DATA.areas[a].name).join(' + '):DATA.areas[S.area].name);
+  try{localStorage.setItem(KEY,JSON.stringify({col:S.col,dept:S.dept,type:S.type,area:S.area,set:S.set}))}catch(e){}}
+function fold(on){$('panel').classList.toggle('fold',on);$('sum').setAttribute('aria-expanded',!on);$('sumB').textContent=on?'바꾸기':'접기'}
+$('sum').onclick=()=>fold(!$('panel').classList.contains('fold'));
+$('goSheet').onclick=()=>{fold(true);$('sheet').scrollIntoView({behavior:'smooth',block:'start'})};
+let restored=false;
+try{const o=JSON.parse(localStorage.getItem(KEY)||'null');const d=o&&DATA.depts.find(x=>x.col===o.col&&x.name===o.dept);
+  if(d){S.col=o.col;S.dept=o.dept;S.type=d.types[o.type]?o.type:0;S.area=o.area;S.set=o.set|0;restored=true}}catch(e){}
+document.addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const tg=e.target.tagName;if(tg==='SELECT'||tg==='INPUT'||tg==='TEXTAREA')return;
+  const tabs=[...document.querySelectorAll('#tabs button')];
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const i=S.set+(e.key==='ArrowRight'?1:-1);if(tabs[i]){e.preventDefault();tabs[i].click()}}
+  else if(e.key===' '&&tg!=='BUTTON'){e.preventDefault();$('go').click()}});
 /* 선택 */
 fill($('col'),cols,S.col);
 function fillDept(){fill($('dept'),DATA.depts.filter(d=>d.col===S.col).map(d=>d.name),S.dept)}
 $('col').onchange=e=>{S.col=e.target.value;S.dept=DATA.depts.find(d=>d.col===S.col).name;S.type=0;S.area=null;S.set=0;fillDept();render();resetClock()};
 $('dept').onchange=e=>{S.dept=e.target.value;S.type=0;S.area=null;S.set=0;render();resetClock()};
 fillDept();render();resetClock();
+if(restored&&matchMedia('(max-width:860px)').matches)fold(true);
 </script>
 </body>
 </html>
